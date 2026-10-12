@@ -1,0 +1,472 @@
+/* 鴻鼎菓子 智能甜點顧問【嘟嘟小專員】浮動客服元件樣式 (白黃底、極簡清新風) */
+
+:root {
+  --dodo-yellow: #F4B32A;
+  --dodo-yellow-light: #FFF8E7;
+  --dodo-yellow-glow: rgba(244, 179, 42, 0.35);
+  --dodo-brown: #2C1D18;
+  --dodo-brown-muted: #736155;
+  --dodo-white: #FFFFFF;
+  --dodo-bg-cream: #FAF7EE;
+  --dodo-border: #EFE4D2;
+  --dodo-red: #E74C3C;
+  --dodo-shadow: 0 12px 36px rgba(44, 29, 24, 0.16);
+}
+
+/* 1. 右下角浮動發起鈕 (Floating Action Button) */
+.dodo-fab-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row-reverse;
+}
+
+.dodo-fab-btn {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--dodo-white);
+  border: 3px solid var(--dodo-yellow);
+  box-shadow: 0 6px 20px var(--dodo-yellow-glow);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s;
+  padding: 4px;
+  outline: none;
+}
+
+.dodo-fab-btn:hover {
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 8px 26px rgba(244, 179, 42, 0.45);
+}
+
+.dodo-fab-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dodo-fab-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 15px;
+  height: 15px;
+  background: #2ECC71;
+  border: 2.5px solid white;
+  border-radius: 50%;
+}
+
+.dodo-fab-tooltip {
+  background: var(--dodo-white);
+  color: var(--dodo-brown);
+  border: 1.5px solid var(--dodo-yellow);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  white-space: nowrap;
+  animation: dodoPulse 2.5s infinite;
+  pointer-events: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+}
+
+@keyframes dodoPulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* 2. 彈出式對話視窗 (Chat Modal) */
+.dodo-chat-modal {
+  position: fixed;
+  bottom: 96px;
+  right: 24px;
+  width: 390px;
+  max-width: calc(100vw - 32px);
+  height: 600px;
+  max-height: calc(100vh - 120px);
+  background: var(--dodo-white);
+  border-radius: 24px;
+  border: 2px solid var(--dodo-border);
+  box-shadow: var(--dodo-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9998;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+}
+
+.dodo-chat-modal.dodo-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Header */
+.dodo-chat-header {
+  background: linear-gradient(135deg, #FFFFFF 0%, var(--dodo-yellow-light) 100%);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid var(--dodo-border);
+}
+
+.dodo-header-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dodo-header-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--dodo-yellow);
+  background: white;
+}
+
+.dodo-header-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dodo-brown);
+  line-height: 1.2;
+}
+
+.dodo-header-sub {
+  font-size: 11px;
+  color: var(--dodo-brown-muted);
+}
+
+.dodo-close-btn {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--dodo-brown-muted);
+  font-size: 18px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dodo-close-btn:hover {
+  background: rgba(0,0,0,0.06);
+  color: var(--dodo-brown);
+}
+
+/* 訊息區域 */
+.dodo-chat-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--dodo-bg-cream);
+  scroll-behavior: smooth;
+}
+
+/* 歡迎橫幅（展示 2D 平面插畫） */
+.dodo-welcome-banner {
+  background: var(--dodo-white);
+  border: 1.5px solid var(--dodo-border);
+  border-radius: 18px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(44, 29, 24, 0.04);
+}
+
+.dodo-welcome-img {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 8px auto;
+  border-radius: 50%;
+  border: 3px solid var(--dodo-yellow);
+  object-fit: cover;
+  display: block;
+}
+
+.dodo-welcome-greeting {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dodo-brown);
+  margin-bottom: 4px;
+}
+
+.dodo-welcome-text {
+  font-size: 12px;
+  color: var(--dodo-brown-muted);
+  line-height: 1.5;
+}
+
+/* 快速情境按鈕 */
+.dodo-chips-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.dodo-chip {
+  background: var(--dodo-yellow-light);
+  border: 1px solid #FFE29A;
+  color: var(--dodo-brown);
+  padding: 7px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.dodo-chip:hover {
+  background: var(--dodo-yellow);
+  transform: translateX(3px);
+}
+
+/* 對話氣泡 */
+.dodo-msg-row {
+  display: flex;
+  gap: 8px;
+  max-width: 90%;
+  animation: dodoFadeIn 0.25s ease-out;
+}
+
+@keyframes dodoFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dodo-bot-row {
+  align-self: flex-start;
+}
+
+.dodo-user-row {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.dodo-msg-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--dodo-yellow);
+  background: white;
+  flex-shrink: 0;
+}
+
+.dodo-bubble {
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  box-shadow: 0 2px 8px rgba(44, 29, 24, 0.04);
+}
+
+.dodo-bot-bubble {
+  background: var(--dodo-white);
+  border: 1px solid var(--dodo-border);
+  color: var(--dodo-brown);
+  border-top-left-radius: 3px;
+}
+
+.dodo-user-bubble {
+  background: var(--dodo-yellow);
+  color: var(--dodo-brown);
+  font-weight: 600;
+  border-top-right-radius: 3px;
+}
+
+/* 商品卡片群 */
+.dodo-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.dodo-card {
+  background: var(--dodo-white);
+  border: 1.5px solid #F6E2B8;
+  border-radius: 14px;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(44, 29, 24, 0.04);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.dodo-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--dodo-yellow);
+}
+
+.dodo-card-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #F0E6D8;
+  flex-shrink: 0;
+}
+
+.dodo-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dodo-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dodo-brown);
+  line-height: 1.25;
+}
+
+.dodo-card-meta {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.dodo-tag {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-weight: 600;
+  background: #E8F8F5;
+  color: #16A085;
+}
+
+.dodo-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.dodo-sale-price {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--dodo-red);
+}
+
+.dodo-orig-price {
+  font-size: 11px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.dodo-buy-btn {
+  display: inline-block;
+  background: var(--dodo-yellow);
+  color: var(--dodo-brown);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  width: fit-content;
+  margin-top: 3px;
+  transition: background 0.2s;
+}
+
+.dodo-buy-btn:hover {
+  background: #E5A31C;
+}
+
+/* 等待輸入動畫 */
+.dodo-typing-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+}
+
+.dodo-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--dodo-yellow);
+  border-radius: 50%;
+  animation: dodoBounce 1.2s infinite;
+}
+.dodo-dot:nth-child(2) { animation-delay: 0.2s; }
+.dodo-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dodoBounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-5px); }
+}
+
+/* 底部輸入列 */
+.dodo-chat-footer {
+  background: var(--dodo-white);
+  padding: 12px 14px;
+  border-top: 1.5px solid var(--dodo-border);
+}
+
+.dodo-input-form {
+  display: flex;
+  gap: 8px;
+}
+
+.dodo-input-box {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1.5px solid var(--dodo-border);
+  border-radius: 20px;
+  font-size: 13px;
+  outline: none;
+  background: #FAF8F5;
+  color: var(--dodo-brown);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.dodo-input-box:focus {
+  border-color: var(--dodo-yellow);
+  background: white;
+}
+
+.dodo-send-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--dodo-yellow);
+  border: none;
+  color: var(--dodo-brown);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s;
+}
+
+.dodo-send-btn:hover {
+  background: #E5A31C;
+  transform: scale(1.05);
+}
+
+.dodo-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
