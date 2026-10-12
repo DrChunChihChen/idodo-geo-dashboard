@@ -14,10 +14,10 @@
   <!-- 鴻鼎菓子 智能甜點顧問【嘟嘟小專員】樣式 -->
   <link rel="stylesheet" href="css/dodo-chat.css">
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-amber-500 selection:text-slate-950">
+<body class="bg-[#FAF8F5] text-stone-900 min-h-screen flex flex-col font-sans selection:bg-amber-400 selection:text-stone-950">
 
   <!-- 頂部通用導航列 -->
-  <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-40 px-6 py-3.5">
+  <header class="border-b border-stone-200 bg-white/95 shadow-sm backdrop-blur sticky top-0 z-40 px-6 py-3.5">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
       
       <!-- Logo 與標題 -->
@@ -26,37 +26,37 @@
           <img src="https://www.idodo.com.tw/assets/front/cht/base/images/logo.png" alt="鴻鼎菓子" class="h-9 w-auto bg-white/95 px-2 py-1 rounded-lg shadow-sm">
           <div class="hidden sm:block">
             <div class="flex items-center gap-2">
-              <span class="text-sm font-bold tracking-tight text-white">鴻鼎菓子 iDoDo</span>
+              <span class="text-sm font-bold tracking-tight text-stone-900">鴻鼎菓子 iDoDo</span>
               <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">黑客松 PoC</span>
             </div>
-            <p class="text-[11px] text-slate-400">搶進 AI 推薦清單：打造品牌搜尋成長引擎</p>
+            <p class="text-[11px] text-stone-500">搶進 AI 推薦清單：打造品牌搜尋成長引擎</p>
           </div>
         </a>
       </div>
 
       <!-- 分頁切換鈕 (核心展示亮點) -->
-      <nav class="flex items-center gap-1.5 bg-slate-950 border border-slate-800 p-1 rounded-xl">
-        <button id="btn-tab-dashboard" onclick="setTab('dashboard')" class="tab-btn px-3.5 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 bg-amber-500/20 text-amber-300 border border-amber-500/30">
+      <nav class="flex items-center gap-1.5 bg-stone-100 border border-stone-200 p-1 rounded-xl">
+        <button id="btn-tab-dashboard" onclick="setTab('dashboard')" class="tab-btn px-3.5 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 bg-amber-500/20 text-amber-800 border border-amber-400/40 font-bold">
           <i class="fa-solid fa-chart-line"></i> GEO 聲量觀測儀表板
         </button>
-        <button id="btn-tab-storefront" onclick="setTab('storefront')" class="tab-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-400 hover:text-white flex items-center gap-1.5">
+        <button id="btn-tab-storefront" onclick="setTab('storefront')" class="tab-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-stone-500 hover:text-stone-900 flex items-center gap-1.5">
           <i class="fa-solid fa-store"></i> 模擬品牌旗艦站 (AI-Ready)
         </button>
-        <button id="btn-tab-auditor" onclick="setTab('auditor')" class="tab-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-400 hover:text-white flex items-center gap-1.5">
+        <button id="btn-tab-auditor" onclick="setTab('auditor')" class="tab-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-stone-500 hover:text-stone-900 flex items-center gap-1.5">
           <i class="fa-solid fa-stethoscope"></i> 官網 AI 體檢與 Schema
         </button>
       </nav>
 
       <!-- 檢測模式 (在儀表板分頁時顯示) -->
-      <div id="modeSwitchContainer" class="flex items-center gap-2 bg-slate-950 border border-slate-800 px-2 py-1 rounded-xl">
-        <span class="text-[11px] font-medium text-slate-400">模式：</span>
+      <div id="modeSwitchContainer" class="flex items-center gap-2 bg-stone-100 border border-stone-200 px-2 py-1 rounded-xl">
+        <span class="text-[11px] font-medium text-stone-500">模式：</span>
         <button id="btnModeBaseline" onclick="setMode('baseline')" class="mode-btn px-2.5 py-1 text-[11px] font-semibold rounded-lg text-rose-300 hover:bg-rose-500/10 transition-all">
           優化前現況
         </button>
         <button id="btnModeOptimized" onclick="setMode('optimized')" class="mode-btn px-2.5 py-1 text-[11px] font-semibold rounded-lg text-emerald-300 bg-emerald-500/20 border border-emerald-500/30 active-mode transition-all">
           GEO 優化後
         </button>
-        <button id="btnModeAll" onclick="setMode('all')" class="mode-btn px-2.5 py-1 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition-all">
+        <button id="btnModeAll" onclick="setMode('all')" class="mode-btn px-2.5 py-1 text-[11px] font-semibold rounded-lg text-stone-500 hover:text-stone-900 transition-all">
           全部 (1000)
         </button>
       </div>
@@ -71,103 +71,103 @@
 
     <!-- 頂部四大 KPI 指標卡片 -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="metric-card bg-slate-900/80 border border-slate-800 p-5 rounded-2xl relative overflow-hidden">
-        <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+      <div class="metric-card bg-white border border-stone-200 shadow-sm p-5 rounded-2xl relative overflow-hidden">
+        <div class="flex items-center justify-between text-stone-500 text-xs font-medium">
           <span>鴻鼎菓子 AI 提及率 (BMR)</span>
           <i class="fa-solid fa-bullseye text-amber-400 text-base"></i>
         </div>
         <div class="mt-3 flex items-baseline gap-2">
-          <span id="kpiMentionRate" class="text-3xl font-extrabold text-white">--%</span>
+          <span id="kpiMentionRate" class="text-3xl font-extrabold text-stone-900">--%</span>
           <span id="kpiMentionDiff" class="text-xs font-semibold px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">+--%</span>
         </div>
-        <p class="mt-2 text-xs text-slate-400">高頻送禮 Prompt 經 AI 生成推薦命中比例</p>
+        <p class="mt-2 text-xs text-stone-500">高頻送禮 Prompt 經 AI 生成推薦命中比例</p>
         <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-rose-500"></div>
       </div>
 
-      <div class="metric-card bg-slate-900/80 border border-slate-800 p-5 rounded-2xl relative overflow-hidden">
-        <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+      <div class="metric-card bg-white border border-stone-200 shadow-sm p-5 rounded-2xl relative overflow-hidden">
+        <div class="flex items-center justify-between text-stone-500 text-xs font-medium">
           <span>平均推薦序位 (Average Rank)</span>
           <i class="fa-solid fa-trophy text-yellow-400 text-base"></i>
         </div>
         <div class="mt-3 flex items-baseline gap-2">
-          <span id="kpiAvgRank" class="text-3xl font-extrabold text-white">第 - 名</span>
+          <span id="kpiAvgRank" class="text-3xl font-extrabold text-stone-900">第 - 名</span>
           <span id="kpiTop1Ratio" class="text-xs font-semibold px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20">Top 1 佔比 --%</span>
         </div>
-        <p class="mt-2 text-xs text-slate-400">AI 推薦清單中鴻鼎菓子之排列序位</p>
+        <p class="mt-2 text-xs text-stone-500">AI 推薦清單中鴻鼎菓子之排列序位</p>
         <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-500 to-amber-500"></div>
       </div>
 
-      <div class="metric-card bg-slate-900/80 border border-slate-800 p-5 rounded-2xl relative overflow-hidden">
-        <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+      <div class="metric-card bg-white border border-stone-200 shadow-sm p-5 rounded-2xl relative overflow-hidden">
+        <div class="flex items-center justify-between text-stone-500 text-xs font-medium">
           <span>官方網域引用率 (Citation)</span>
           <i class="fa-solid fa-link text-cyan-400 text-base"></i>
         </div>
         <div class="mt-3 flex items-baseline gap-2">
-          <span id="kpiOfficialCitation" class="text-3xl font-extrabold text-white">--%</span>
+          <span id="kpiOfficialCitation" class="text-3xl font-extrabold text-stone-900">--%</span>
           <span class="text-xs font-semibold px-2 py-0.5 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">idodo.com.tw</span>
         </div>
-        <p class="mt-2 text-xs text-slate-400">AI 回答底部附上官網直達連結之比例</p>
+        <p class="mt-2 text-xs text-stone-500">AI 回答底部附上官網直達連結之比例</p>
         <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
       </div>
 
-      <div class="metric-card bg-slate-900/80 border border-slate-800 p-5 rounded-2xl relative overflow-hidden">
-        <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+      <div class="metric-card bg-white border border-stone-200 shadow-sm p-5 rounded-2xl relative overflow-hidden">
+        <div class="flex items-center justify-between text-stone-500 text-xs font-medium">
           <span>核心特徵保真度 (USP Fidelity)</span>
           <i class="fa-solid fa-certificate text-emerald-400 text-base"></i>
         </div>
         <div class="mt-3 flex items-baseline gap-2">
-          <span id="kpiUspFidelity" class="text-3xl font-extrabold text-white">--%</span>
+          <span id="kpiUspFidelity" class="text-3xl font-extrabold text-stone-900">--%</span>
           <span class="text-xs font-semibold px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">無添加/潔淨標章</span>
         </div>
-        <p class="mt-2 text-xs text-slate-400">AI 能正確輸出「雙潔淨/無添加/專利包心」比例</p>
+        <p class="mt-2 text-xs text-stone-500">AI 能正確輸出「雙潔淨/無添加/專利包心」比例</p>
         <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
       </div>
     </div>
 
     <!-- 視覺化圖表區域 (2x2 Grid) -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl">
+      <div class="bg-white border border-stone-200 shadow-sm p-5 rounded-2xl">
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <h2 class="text-base font-bold text-stone-900 flex items-center gap-2">
             <i class="fa-solid fa-chart-column text-amber-400"></i> 五大消費情境 AI 推薦命中率
           </h2>
-          <span class="text-xs text-slate-400">命中百分比 (%)</span>
+          <span class="text-xs text-stone-500">命中百分比 (%)</span>
         </div>
         <div class="h-64">
           <canvas id="chartCategory"></canvas>
         </div>
       </div>
 
-      <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl">
+      <div class="bg-white border border-stone-200 shadow-sm p-5 rounded-2xl">
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <h2 class="text-base font-bold text-stone-900 flex items-center gap-2">
             <i class="fa-solid fa-chart-pie text-rose-400"></i> 市場競品 AI Share of Voice (SOV)
           </h2>
-          <span class="text-xs text-slate-400">AI 提及總次數分額</span>
+          <span class="text-xs text-stone-500">AI 提及總次數分額</span>
         </div>
         <div class="h-64 flex items-center justify-center">
           <canvas id="chartSOV"></canvas>
         </div>
       </div>
 
-      <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl">
+      <div class="bg-white border border-stone-200 shadow-sm p-5 rounded-2xl">
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <h2 class="text-base font-bold text-stone-900 flex items-center gap-2">
             <i class="fa-solid fa-robot text-cyan-400"></i> 四大主流 AI 模型推薦傾向
           </h2>
-          <span class="text-xs text-slate-400">ChatGPT vs Perplexity vs Gemini vs Claude</span>
+          <span class="text-xs text-stone-500">ChatGPT vs Perplexity vs Gemini vs Claude</span>
         </div>
         <div class="h-64">
           <canvas id="chartModels"></canvas>
         </div>
       </div>
 
-      <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl">
+      <div class="bg-white border border-stone-200 shadow-sm p-5 rounded-2xl">
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <h2 class="text-base font-bold text-stone-900 flex items-center gap-2">
             <i class="fa-solid fa-radar text-emerald-400"></i> 核心特色標籤 (USP) 命中雷達
           </h2>
-          <span class="text-xs text-slate-400">品牌實體認知強度</span>
+          <span class="text-xs text-stone-500">品牌實體認知強度</span>
         </div>
         <div class="h-64 flex items-center justify-center">
           <canvas id="chartRadar"></canvas>
@@ -176,14 +176,14 @@
     </div>
 
     <!-- 評審即時測試沙盒 -->
-    <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl">
-      <h2 class="text-base font-bold text-white flex items-center gap-2 mb-2">
+    <div class="bg-white border border-stone-200 shadow-sm p-5 rounded-2xl">
+      <h2 class="text-base font-bold text-stone-900 flex items-center gap-2 mb-2">
         <i class="fa-solid fa-terminal text-amber-400"></i> 評審互動專區：即時 Prompt 模擬評測沙盒
       </h2>
-      <p class="text-xs text-slate-400 mb-3">請現場輸入任意消費者的送禮提問，系統將模擬呼叫 Perplexity / ChatGPT Search 進行即時預測：</p>
+      <p class="text-xs text-stone-500 mb-3">請現場輸入任意消費者的送禮提問，系統將模擬呼叫 Perplexity / ChatGPT Search 進行即時預測：</p>
       <div class="flex flex-col sm:flex-row gap-3">
-        <input id="inputCustomPrompt" type="text" placeholder="例如：請推薦預算 600 元以內，有雙潔淨認證且適合長輩的台中伴手禮..." class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500">
-        <button onclick="runLiveSandbox()" class="bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+        <input id="inputCustomPrompt" type="text" placeholder="例如：請推薦預算 600 元以內，有雙潔淨認證且適合長輩的台中伴手禮..." class="flex-1 bg-white border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-stone-900 focus:outline-none focus:border-amber-500">
+        <button onclick="runLiveSandbox()" class="bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-stone-900 font-bold text-xs px-5 py-2.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
           <i class="fa-solid fa-play"></i> 即時評測
         </button>
       </div>
@@ -191,15 +191,15 @@
     </div>
 
     <!-- 1,000 筆資料篩選與明細檢視表 -->
-    <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl space-y-4">
+    <div class="bg-white border border-stone-200 shadow-sm p-5 rounded-2xl space-y-4">
       <div class="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <h2 class="text-base font-bold text-stone-900 flex items-center gap-2">
             <i class="fa-solid fa-table-list text-cyan-400"></i> 1,000 筆 Prompt 評測明細穿透檢索表
           </h2>
-          <p class="text-xs text-slate-400">支援即時篩選、搜尋任一消費場景與 AI 回答之排名、特徵與引用來源</p>
+          <p class="text-xs text-stone-500">支援即時篩選、搜尋任一消費場景與 AI 回答之排名、特徵與引用來源</p>
         </div>
-        <button onclick="exportCSV()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3.5 py-2 rounded-xl border border-slate-700 flex items-center gap-1.5 transition-all">
+        <button onclick="exportCSV()" class="text-xs bg-slate-800 hover:bg-slate-700 text-stone-800 px-3.5 py-2 rounded-xl border border-slate-700 flex items-center gap-1.5 transition-all">
           <i class="fa-solid fa-file-csv text-emerald-400"></i> 匯出 CSV 報表
         </button>
       </div>
@@ -207,8 +207,8 @@
       <!-- 篩選列 -->
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-2">
         <div>
-          <label class="text-[11px] font-medium text-slate-400 block mb-1">消費情境分類</label>
-          <select id="filterCategory" onchange="applyFilters()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+          <label class="text-[11px] font-medium text-stone-500 block mb-1">消費情境分類</label>
+          <select id="filterCategory" onchange="applyFilters()" class="w-full bg-white border border-slate-700 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none">
             <option value="all">全部情境</option>
             <option value="企業福委送禮">企業福委送禮</option>
             <option value="長輩健康養生">長輩健康養生</option>
@@ -218,8 +218,8 @@
           </select>
         </div>
         <div>
-          <label class="text-[11px] font-medium text-slate-400 block mb-1">AI 搜尋模型</label>
-          <select id="filterModel" onchange="applyFilters()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+          <label class="text-[11px] font-medium text-stone-500 block mb-1">AI 搜尋模型</label>
+          <select id="filterModel" onchange="applyFilters()" class="w-full bg-white border border-slate-700 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none">
             <option value="all">全部模型</option>
             <option value="ChatGPT Search">ChatGPT Search</option>
             <option value="Perplexity Sonar">Perplexity Sonar</option>
@@ -228,24 +228,24 @@
           </select>
         </div>
         <div>
-          <label class="text-[11px] font-medium text-slate-400 block mb-1">推薦結果狀態</label>
-          <select id="filterMention" onchange="applyFilters()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+          <label class="text-[11px] font-medium text-stone-500 block mb-1">推薦結果狀態</label>
+          <select id="filterMention" onchange="applyFilters()" class="w-full bg-white border border-slate-700 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none">
             <option value="all">全部結果</option>
             <option value="yes">僅看有提及鴻鼎菓子</option>
             <option value="no">僅看未提及鴻鼎菓子</option>
           </select>
         </div>
         <div>
-          <label class="text-[11px] font-medium text-slate-400 block mb-1">關鍵字搜尋</label>
-          <input id="inputSearch" type="text" oninput="applyFilters()" placeholder="搜尋 Prompt 或特徵..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+          <label class="text-[11px] font-medium text-stone-500 block mb-1">關鍵字搜尋</label>
+          <input id="inputSearch" type="text" oninput="applyFilters()" placeholder="搜尋 Prompt 或特徵..." class="w-full bg-white border border-slate-700 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none">
         </div>
       </div>
 
       <!-- 表格 -->
-      <div class="overflow-x-auto rounded-xl border border-slate-800">
+      <div class="overflow-x-auto rounded-xl border border-stone-200">
         <table class="w-full text-left border-collapse text-xs">
           <thead>
-            <tr class="bg-slate-950 border-b border-slate-800 text-slate-400 font-semibold">
+            <tr class="bg-white border-b border-stone-200 text-stone-500 font-semibold">
               <th class="py-3 px-4">編號</th>
               <th class="py-3 px-4">情境分類</th>
               <th class="py-3 px-4">AI 模型</th>
@@ -256,19 +256,19 @@
               <th class="py-3 px-4 text-center">操作</th>
             </tr>
           </thead>
-          <tbody id="tableBody" class="divide-y divide-slate-800/80 text-slate-300"></tbody>
+          <tbody id="tableBody" class="divide-y divide-slate-800/80 text-stone-600"></tbody>
         </table>
       </div>
 
       <!-- 分頁 -->
-      <div class="flex flex-wrap items-center justify-between gap-4 pt-2 text-xs text-slate-400">
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-2 text-xs text-stone-500">
         <div>
           顯示第 <span id="pageStart">1</span> 至 <span id="pageEnd">10</span> 筆，共 <span id="totalFiltered">1000</span> 筆
         </div>
         <div class="flex items-center gap-2">
-          <button onclick="prevPage()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all">上一頁</button>
-          <span class="px-3 py-1 font-semibold text-white bg-slate-800 rounded-lg">第 <span id="currentPage">1</span> / <span id="totalPages">100</span> 頁</span>
-          <button onclick="nextPage()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all">下一頁</button>
+          <button onclick="prevPage()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-stone-600 transition-all">上一頁</button>
+          <span class="px-3 py-1 font-semibold text-stone-900 bg-slate-800 rounded-lg">第 <span id="currentPage">1</span> / <span id="totalPages">100</span> 頁</span>
+          <button onclick="nextPage()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-stone-600 transition-all">下一頁</button>
         </div>
       </div>
     </div>
@@ -288,22 +288,22 @@
         </div>
         <div>
           <h3 class="text-sm font-bold text-amber-300">鴻鼎菓子模擬官方旗艦店（AI-Ready 成果演示）</h3>
-          <p class="text-xs text-slate-400">以真實官網元素重構，注入 Schema.org 結構化資料與語意標籤，使 AI 爬蟲能 100% 精準擷取。</p>
+          <p class="text-xs text-stone-500">以真實官網元素重構，注入 Schema.org 結構化資料與語意標籤，使 AI 爬蟲能 100% 精準擷取。</p>
         </div>
       </div>
-      <button id="btnToggleGeo" onclick="toggleGeoOverlay()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all flex items-center gap-2">
+      <button id="btnToggleGeo" onclick="toggleGeoOverlay()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-stone-600 border border-slate-700 transition-all flex items-center gap-2">
         <i class="fa-solid fa-eye-slash"></i> 開啟 GEO 語意代碼透視
       </button>
     </div>
 
     <!-- 品牌主視覺 Banner (採用官方素材) -->
-    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-800">
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-stone-200">
       <img src="https://www.idodo.com.tw/upload/shop_page_editor_banner/b3c24c86b3042a357e46d041abf3e9b7.png" alt="鴻鼎菓子官方形象" class="w-full h-64 sm:h-80 object-cover">
       <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-end p-8">
         <div class="geo-badge hidden inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500 text-slate-950 text-xs font-black mb-3 w-max">
           <i class="fa-solid fa-check"></i> &lt;h1&gt; 修復完畢：唯一核心主標題 (Single Semantic H1)
         </div>
-        <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
           因為是你 鴻鼎菓子 ‧ 每一口都有被在乎的味道
         </h1>
         <p class="text-sm sm:text-base text-amber-200/90 mt-2">
@@ -314,32 +314,32 @@
 
     <!-- 品牌四大權威榮譽標章跑馬條 -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-      <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center gap-3">
+      <div class="bg-white border border-stone-200 shadow-sm p-4 rounded-2xl flex items-center gap-3">
         <i class="fa-solid fa-award text-amber-400 text-2xl"></i>
         <div>
-          <span class="text-xs font-bold text-white block">台中十大伴手禮首獎</span>
-          <span class="text-[11px] text-slate-400">雙首獎禮盒權威認證</span>
+          <span class="text-xs font-bold text-stone-900 block">台中十大伴手禮首獎</span>
+          <span class="text-[11px] text-stone-500">雙首獎禮盒權威認證</span>
         </div>
       </div>
-      <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center gap-3">
+      <div class="bg-white border border-stone-200 shadow-sm p-4 rounded-2xl flex items-center gap-3">
         <i class="fa-solid fa-star text-amber-400 text-2xl"></i>
         <div>
-          <span class="text-xs font-bold text-white block">全球純粹風味三星認證</span>
-          <span class="text-[11px] text-slate-400">連續6年最高殊榮 (A.A.)</span>
+          <span class="text-xs font-bold text-stone-900 block">全球純粹風味三星認證</span>
+          <span class="text-[11px] text-stone-500">連續6年最高殊榮 (A.A.)</span>
         </div>
       </div>
-      <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center gap-3">
+      <div class="bg-white border border-stone-200 shadow-sm p-4 rounded-2xl flex items-center gap-3">
         <i class="fa-solid fa-shield-heart text-emerald-400 text-2xl"></i>
         <div>
-          <span class="text-xs font-bold text-white block">慈悅雙潔淨標章 (Clean)</span>
-          <span class="text-[11px] text-slate-400">100% 純粹無添加防腐劑</span>
+          <span class="text-xs font-bold text-stone-900 block">慈悅雙潔淨標章 (Clean)</span>
+          <span class="text-[11px] text-stone-500">100% 純粹無添加防腐劑</span>
         </div>
       </div>
-      <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center gap-3">
+      <div class="bg-white border border-stone-200 shadow-sm p-4 rounded-2xl flex items-center gap-3">
         <i class="fa-solid fa-lightbulb text-cyan-400 text-2xl"></i>
         <div>
-          <span class="text-xs font-bold text-white block">全台獨家專利包心技術</span>
-          <span class="text-[11px] text-slate-400">台灣烘焙大賞 TOP 30</span>
+          <span class="text-xs font-bold text-stone-900 block">全台獨家專利包心技術</span>
+          <span class="text-[11px] text-stone-500">台灣烘焙大賞 TOP 30</span>
         </div>
       </div>
     </div>
@@ -348,10 +348,10 @@
     <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-amber-500/30 p-6 rounded-3xl shadow-xl">
       <div class="flex items-center justify-between mb-4">
         <div>
-          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <h2 class="text-lg font-bold text-stone-900 flex items-center gap-2">
             <i class="fa-solid fa-calculator text-amber-400"></i> 企業福委大宗送禮預算試算機
           </h2>
-          <p class="text-xs text-slate-400">專為上市櫃公司秘書、福委設計，一鍵試算折扣並智能匹配禮盒方案</p>
+          <p class="text-xs text-stone-500">專為上市櫃公司秘書、福委設計，一鍵試算折扣並智能匹配禮盒方案</p>
         </div>
         <span class="text-xs font-bold px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">
           大宗採購專區
@@ -360,19 +360,19 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
         <div>
-          <label class="text-xs text-slate-400 block mb-1">每份送禮預算區間 (NT$)</label>
-          <select id="calcBudget" onchange="calculateCorporateGifting()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+          <label class="text-xs text-stone-500 block mb-1">每份送禮預算區間 (NT$)</label>
+          <select id="calcBudget" onchange="calculateCorporateGifting()" class="w-full bg-white border border-slate-700 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none">
             <option value="450">NT$ 400 ~ 500 (小資平價首選)</option>
             <option value="600" selected>NT$ 500 ~ 700 (主管長輩熱門款)</option>
             <option value="800">NT$ 700 ~ 1,000 (商務尊榮頂級雙首獎)</option>
           </select>
         </div>
         <div>
-          <label class="text-xs text-slate-400 block mb-1">採購數量 (盒數)</label>
-          <input id="calcQty" type="number" value="120" min="10" step="10" oninput="calculateCorporateGifting()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+          <label class="text-xs text-stone-500 block mb-1">採購數量 (盒數)</label>
+          <input id="calcQty" type="number" value="120" min="10" step="10" oninput="calculateCorporateGifting()" class="w-full bg-white border border-slate-700 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none">
         </div>
         <div class="flex items-end">
-          <button onclick="calculateCorporateGifting()" class="w-full bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white font-bold py-2 rounded-xl text-xs transition-all shadow-md">
+          <button onclick="calculateCorporateGifting()" class="w-full bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-stone-900 font-bold py-2 rounded-xl text-xs transition-all shadow-md">
             即時計算最佳方案
           </button>
         </div>
@@ -387,17 +387,17 @@
     <div class="space-y-4">
       <div class="flex items-center justify-between">
         <div>
-          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <h2 class="text-lg font-bold text-stone-900 flex items-center gap-2">
             <i class="fa-solid fa-cookie-bite text-amber-400"></i> 熱銷明星商品系列 (Official Products)
           </h2>
-          <p class="text-xs text-slate-400">每款商品皆已嵌入標準 Schema.org Product 結構化資料</p>
+          <p class="text-xs text-stone-500">每款商品皆已嵌入標準 Schema.org Product 結構化資料</p>
         </div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <!-- 商品 1 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all flex flex-col justify-between group">
+        <div class="bg-white border border-stone-200 shadow-sm rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all flex flex-col justify-between group">
           <div class="relative">
             <img src="https://www.idodo.com.tw/upload/shop_product_img/e5a3e99e4bc139ecd6107335708831e3.png" alt="雙拼派對-噠啵曲奇" class="w-full h-52 object-contain bg-white/5 p-4 group-hover:scale-105 transition-transform">
             <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500 text-slate-950">台灣烘焙大賞TOP30</span>
@@ -406,9 +406,9 @@
             </div>
           </div>
           <div class="p-4 space-y-2">
-            <h3 class="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">雙拼派對-橘金附提袋｜噠啵曲奇</h3>
-            <p class="text-xs text-slate-400 line-clamp-2">全台獨家專利雙層包心曲奇！雙重風味一口淪餡，可可歐蕾與海鹽摩卡爆擊口感。</p>
-            <div class="flex items-baseline justify-between pt-2 border-t border-slate-800">
+            <h3 class="text-sm font-bold text-stone-900 group-hover:text-amber-400 transition-colors">雙拼派對-橘金附提袋｜噠啵曲奇</h3>
+            <p class="text-xs text-stone-500 line-clamp-2">全台獨家專利雙層包心曲奇！雙重風味一口淪餡，可可歐蕾與海鹽摩卡爆擊口感。</p>
+            <div class="flex items-baseline justify-between pt-2 border-t border-stone-200">
               <div>
                 <span class="text-xs text-slate-500 line-through">NT$ 618</span>
                 <span class="text-base font-extrabold text-amber-400 ml-1">NT$ 550</span>
@@ -419,18 +419,18 @@
         </div>
 
         <!-- 商品 2 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all flex flex-col justify-between group">
+        <div class="bg-white border border-stone-200 shadow-sm rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all flex flex-col justify-between group">
           <div class="relative">
             <img src="https://www.idodo.com.tw/upload/shop_product_img/806a4d14fc37495afa3ffda7f239179a.png" alt="十大伴手禮首獎-檸檬酥" class="w-full h-52 object-contain bg-white/5 p-4 group-hover:scale-105 transition-transform">
-            <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500 text-white">台中十大伴手禮首獎</span>
+            <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500 text-stone-900">台中十大伴手禮首獎</span>
             <div class="geo-badge hidden absolute bottom-2 right-2 px-2 py-0.5 rounded bg-emerald-500 text-slate-950 text-[10px] font-bold">
               JSON-LD: Product & Award
             </div>
           </div>
           <div class="p-4 space-y-2">
-            <h3 class="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">十大伴手禮首獎-檸檬酥7入禮盒</h3>
-            <p class="text-xs text-slate-400 line-clamp-2">全台第一！秘製減糖熟成工法，保留一分微苦打造檸香回甘，熱銷爆單。</p>
-            <div class="flex items-baseline justify-between pt-2 border-t border-slate-800">
+            <h3 class="text-sm font-bold text-stone-900 group-hover:text-amber-400 transition-colors">十大伴手禮首獎-檸檬酥7入禮盒</h3>
+            <p class="text-xs text-stone-500 line-clamp-2">全台第一！秘製減糖熟成工法，保留一分微苦打造檸香回甘，熱銷爆單。</p>
+            <div class="flex items-baseline justify-between pt-2 border-t border-stone-200">
               <div>
                 <span class="text-xs text-slate-500 line-through">NT$ 517</span>
                 <span class="text-base font-extrabold text-amber-400 ml-1">NT$ 460</span>
@@ -441,7 +441,7 @@
         </div>
 
         <!-- 商品 3 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all flex flex-col justify-between group">
+        <div class="bg-white border border-stone-200 shadow-sm rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all flex flex-col justify-between group">
           <div class="relative">
             <img src="https://www.idodo.com.tw/upload/shop_product_img/5d942ed13a70f07706e8ec46197a1109.png" alt="台灣黑熊國民曲奇" class="w-full h-52 object-contain bg-white/5 p-4 group-hover:scale-105 transition-transform">
             <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500 text-slate-950">連續6年世界三星評鑑</span>
@@ -450,9 +450,9 @@
             </div>
           </div>
           <div class="p-4 space-y-2">
-            <h3 class="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">人氣三色-橘金附提袋｜無添加曲奇餅</h3>
-            <p class="text-xs text-slate-400 line-clamp-2">年年熱銷突破30座101！連續6年全球純粹風味最高榮譽三星，純天然無添加防腐劑。</p>
-            <div class="flex items-baseline justify-between pt-2 border-t border-slate-800">
+            <h3 class="text-sm font-bold text-stone-900 group-hover:text-amber-400 transition-colors">人氣三色-橘金附提袋｜無添加曲奇餅</h3>
+            <p class="text-xs text-stone-500 line-clamp-2">年年熱銷突破30座101！連續6年全球純粹風味最高榮譽三星，純天然無添加防腐劑。</p>
+            <div class="flex items-baseline justify-between pt-2 border-t border-stone-200">
               <div>
                 <span class="text-xs text-slate-500 line-through">NT$ 506</span>
                 <span class="text-base font-extrabold text-amber-400 ml-1">NT$ 450</span>
@@ -463,15 +463,15 @@
         </div>
 
         <!-- 商品 4 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all flex flex-col justify-between group">
+        <div class="bg-white border border-stone-200 shadow-sm rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all flex flex-col justify-between group">
           <div class="relative">
             <img src="https://www.idodo.com.tw/upload/shop_product_img/fba0dbae231f501b10013a4080898df2.png" alt="雙首獎禮盒" class="w-full h-52 object-contain bg-white/5 p-4 group-hover:scale-105 transition-transform">
             <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-yellow-500 text-slate-950">送禮旗艦首選</span>
           </div>
           <div class="p-4 space-y-2">
-            <h3 class="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">臺中伴手禮-雙首獎禮盒(黃)｜伴手禮盒</h3>
-            <p class="text-xs text-slate-400 line-clamp-2">榮獲台中首獎雙重榮耀！專利包心曲奇搭配熟成檸檬酥，企業主管拜訪指定款式。</p>
-            <div class="flex items-baseline justify-between pt-2 border-t border-slate-800">
+            <h3 class="text-sm font-bold text-stone-900 group-hover:text-amber-400 transition-colors">臺中伴手禮-雙首獎禮盒(黃)｜伴手禮盒</h3>
+            <p class="text-xs text-stone-500 line-clamp-2">榮獲台中首獎雙重榮耀！專利包心曲奇搭配熟成檸檬酥，企業主管拜訪指定款式。</p>
+            <div class="flex items-baseline justify-between pt-2 border-t border-stone-200">
               <div>
                 <span class="text-xs text-slate-500 line-through">NT$ 754</span>
                 <span class="text-base font-extrabold text-amber-400 ml-1">NT$ 670</span>
@@ -482,15 +482,15 @@
         </div>
 
         <!-- 商品 5 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all flex flex-col justify-between group">
+        <div class="bg-white border border-stone-200 shadow-sm rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all flex flex-col justify-between group">
           <div class="relative">
             <img src="https://www.idodo.com.tw/upload/shop_product_img/cf19294dc67d25eb9b49552415a80fc4.png" alt="國民曲奇檸檬酥" class="w-full h-52 object-contain bg-white/5 p-4 group-hover:scale-105 transition-transform">
             <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-500 text-slate-950">福委人氣款</span>
           </div>
           <div class="p-4 space-y-2">
-            <h3 class="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">國民曲奇．檸檬酥禮盒(黃)｜伴手禮盒</h3>
-            <p class="text-xs text-slate-400 line-clamp-2">中秋與端午企業送禮熱門排行！黑熊曲奇搭配酸甜回甘檸檬酥，經典美味。</p>
-            <div class="flex items-baseline justify-between pt-2 border-t border-slate-800">
+            <h3 class="text-sm font-bold text-stone-900 group-hover:text-amber-400 transition-colors">國民曲奇．檸檬酥禮盒(黃)｜伴手禮盒</h3>
+            <p class="text-xs text-stone-500 line-clamp-2">中秋與端午企業送禮熱門排行！黑熊曲奇搭配酸甜回甘檸檬酥，經典美味。</p>
+            <div class="flex items-baseline justify-between pt-2 border-t border-stone-200">
               <div>
                 <span class="text-xs text-slate-500 line-through">NT$ 804</span>
                 <span class="text-base font-extrabold text-amber-400 ml-1">NT$ 715</span>
@@ -501,15 +501,15 @@
         </div>
 
         <!-- 商品 6 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all flex flex-col justify-between group">
+        <div class="bg-white border border-stone-200 shadow-sm rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all flex flex-col justify-between group">
           <div class="relative">
             <img src="https://www.idodo.com.tw/upload/shop_product_img/c224d514cee519f541757f5b4acf49f8.jpg" alt="元氣雙拼" class="w-full h-52 object-contain bg-white/5 p-4 group-hover:scale-105 transition-transform">
-            <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500 text-white">元氣DODO版</span>
+            <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500 text-stone-900">元氣DODO版</span>
           </div>
           <div class="p-4 space-y-2">
-            <h3 class="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">元氣雙拼-DODO附提袋｜無添加曲奇餅</h3>
-            <p class="text-xs text-slate-400 line-clamp-2">雙重享受！原味與經典巧克力雙拼，鐵盒精美吸睛，交換禮物與彌月首選。</p>
-            <div class="flex items-baseline justify-between pt-2 border-t border-slate-800">
+            <h3 class="text-sm font-bold text-stone-900 group-hover:text-amber-400 transition-colors">元氣雙拼-DODO附提袋｜無添加曲奇餅</h3>
+            <p class="text-xs text-stone-500 line-clamp-2">雙重享受！原味與經典巧克力雙拼，鐵盒精美吸睛，交換禮物與彌月首選。</p>
+            <div class="flex items-baseline justify-between pt-2 border-t border-stone-200">
               <div>
                 <span class="text-xs text-slate-500 line-through">NT$ 506</span>
                 <span class="text-base font-extrabold text-amber-400 ml-1">NT$ 450</span>
@@ -528,15 +528,15 @@
   <!-- TAB 3: 官網 AI 體檢與修復代碼 (Auditor)      -->
   <!-- ========================================== -->
   <section id="tab-auditor" class="tab-content max-w-7xl mx-auto px-6 py-6 flex-1 w-full space-y-6 hidden">
-    <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-3xl space-y-4">
+    <div class="bg-white border border-stone-200 shadow-sm p-6 rounded-3xl space-y-4">
       <div class="flex items-center justify-between">
         <div>
-          <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <h2 class="text-base font-bold text-stone-900 flex items-center gap-2">
             <i class="fa-solid fa-stethoscope text-rose-400"></i> 官網 AI 友善度體檢報告 (Audit Report)
           </h2>
-          <p class="text-xs text-slate-400">目標網站：https://www.idodo.com.tw/（實測時間：2026-10-12）</p>
+          <p class="text-xs text-stone-500">目標網站：https://www.idodo.com.tw/（實測時間：2026-10-12）</p>
         </div>
-        <button onclick="copySchemaCode()" class="px-4 py-2 bg-gradient-to-r from-amber-500 to-rose-500 text-white font-bold text-xs rounded-xl shadow-md transition-all">
+        <button onclick="copySchemaCode()" class="px-4 py-2 bg-gradient-to-r from-amber-500 to-rose-500 text-stone-900 font-bold text-xs rounded-xl shadow-md transition-all">
           <i class="fa-solid fa-copy mr-1"></i> 一鍵複製修復 Schema 代碼
         </button>
       </div>
@@ -546,7 +546,7 @@
           <span class="text-xs font-bold text-rose-400 flex items-center gap-1.5">
             <i class="fa-solid fa-circle-xmark"></i> 結構化資料缺失
           </span>
-          <p class="text-xs text-slate-300"><strong>實測現況：</strong>JSON-LD 數量為 0。AI 爬蟲無法以機器可讀標準解析價格、潔淨認證與評分。</p>
+          <p class="text-xs text-stone-600"><strong>實測現況：</strong>JSON-LD 數量為 0。AI 爬蟲無法以機器可讀標準解析價格、潔淨認證與評分。</p>
           <span class="text-[11px] text-rose-300 font-semibold">嚴重等級：Critical (高致命)</span>
         </div>
 
@@ -554,7 +554,7 @@
           <span class="text-xs font-bold text-rose-400 flex items-center gap-1.5">
             <i class="fa-solid fa-circle-xmark"></i> H1 標籤濫用
           </span>
-          <p class="text-xs text-slate-300"><strong>實測現況：</strong>每頁充斥 18 個固定的導航 H1，但商品名稱僅為普通 span，核心實體權重遭嚴重稀釋。</p>
+          <p class="text-xs text-stone-600"><strong>實測現況：</strong>每頁充斥 18 個固定的導航 H1，但商品名稱僅為普通 span，核心實體權重遭嚴重稀釋。</p>
           <span class="text-[11px] text-rose-300 font-semibold">嚴重等級：High (高阻礙)</span>
         </div>
 
@@ -562,18 +562,18 @@
           <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
             <i class="fa-solid fa-triangle-exclamation"></i> Robots.txt AI 規則未宣告
           </span>
-          <p class="text-xs text-slate-300"><strong>實測現況：</strong>未針對 GPTBot、PerplexityBot、ClaudeBot 等宣告 Allow 權限，爬取頻率受限。</p>
+          <p class="text-xs text-stone-600"><strong>實測現況：</strong>未針對 GPTBot、PerplexityBot、ClaudeBot 等宣告 Allow 權限，爬取頻率受限。</p>
           <span class="text-[11px] text-amber-300 font-semibold">嚴重等級：Medium (中度影響)</span>
         </div>
       </div>
 
       <!-- 修復代碼展示 -->
-      <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
-        <div class="flex items-center justify-between text-xs text-slate-400">
+      <div class="bg-white p-4 rounded-2xl border border-stone-200 space-y-2">
+        <div class="flex items-center justify-between text-xs text-stone-500">
           <span>修復方案：標準 Schema.org JSON-LD 代碼範例（已匹配官網商品）</span>
           <span class="text-emerald-400 font-mono">application/ld+json</span>
         </div>
-        <pre class="text-xs text-slate-300 font-mono bg-slate-900 p-4 rounded-xl overflow-x-auto border border-slate-800">
+        <pre class="text-xs text-stone-600 font-mono bg-stone-50 p-4 rounded-xl overflow-x-auto border border-stone-200">
 {
   "@context": "https://schema.org",
   "@type": "Product",
@@ -598,62 +598,62 @@
 
   <!-- 詳情彈窗 -->
   <div id="detailModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full p-6 space-y-4 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 id="modalTitle" class="text-base font-bold text-white flex items-center gap-2">
+    <div class="bg-stone-50 border border-slate-700 rounded-2xl max-w-2xl w-full p-6 space-y-4 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-stone-200 pb-3">
+        <h3 id="modalTitle" class="text-base font-bold text-stone-900 flex items-center gap-2">
           <i class="fa-solid fa-file-lines text-amber-400"></i> Prompt 評測詳細解析
         </h3>
-        <button onclick="closeModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+        <button onclick="closeModal()" class="text-stone-500 hover:text-stone-900"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
 
       <div class="space-y-3 text-xs">
         <div>
-          <span class="text-slate-400 font-semibold block mb-1">測試之消費者 Prompt：</span>
-          <div id="modalPrompt" class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-slate-200 leading-relaxed"></div>
+          <span class="text-stone-500 font-semibold block mb-1">測試之消費者 Prompt：</span>
+          <div id="modalPrompt" class="p-3 bg-stone-50 rounded-xl border border-stone-200 text-stone-800 leading-relaxed"></div>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 py-1">
-          <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-slate-400 block">情境分類</span>
-            <span id="modalCat" class="font-bold text-white"></span>
+          <div class="bg-stone-50 p-2.5 rounded-xl border border-stone-200">
+            <span class="text-stone-500 block">情境分類</span>
+            <span id="modalCat" class="font-bold text-stone-900"></span>
           </div>
-          <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-slate-400 block">評測模型</span>
+          <div class="bg-stone-50 p-2.5 rounded-xl border border-stone-200">
+            <span class="text-stone-500 block">評測模型</span>
             <span id="modalModel" class="font-bold text-cyan-400"></span>
           </div>
-          <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-slate-400 block">推薦名次</span>
+          <div class="bg-stone-50 p-2.5 rounded-xl border border-stone-200">
+            <span class="text-stone-500 block">推薦名次</span>
             <span id="modalRank" class="font-bold"></span>
           </div>
-          <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-slate-400 block">測試模式</span>
+          <div class="bg-stone-50 p-2.5 rounded-xl border border-stone-200">
+            <span class="text-stone-500 block">測試模式</span>
             <span id="modalMode" class="font-bold"></span>
           </div>
         </div>
 
         <div>
-          <span class="text-slate-400 font-semibold block mb-1">AI 生成回答摘要：</span>
-          <div id="modalAnswer" class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-slate-300 leading-relaxed whitespace-pre-line"></div>
+          <span class="text-stone-500 font-semibold block mb-1">AI 生成回答摘要：</span>
+          <div id="modalAnswer" class="p-3 bg-stone-50 rounded-xl border border-stone-200 text-stone-600 leading-relaxed whitespace-pre-line"></div>
         </div>
 
         <div>
-          <span class="text-slate-400 font-semibold block mb-1">命中核心特色標籤 (USP)：</span>
+          <span class="text-stone-500 font-semibold block mb-1">命中核心特色標籤 (USP)：</span>
           <div id="modalUSPs" class="flex flex-wrap gap-1.5"></div>
         </div>
 
         <div>
-          <span class="text-slate-400 font-semibold block mb-1">參考引用來源 (Citations)：</span>
+          <span class="text-stone-500 font-semibold block mb-1">參考引用來源 (Citations)：</span>
           <div id="modalCitations" class="space-y-1"></div>
         </div>
       </div>
 
-      <div class="pt-2 border-t border-slate-800 flex justify-end">
-        <button onclick="closeModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl text-xs">關閉</button>
+      <div class="pt-2 border-t border-stone-200 flex justify-end">
+        <button onclick="closeModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-stone-600 font-semibold rounded-xl text-xs">關閉</button>
       </div>
     </div>
   </div>
 
-  <footer class="border-t border-slate-800 py-4 px-6 text-center text-xs text-slate-500 bg-slate-950">
+  <footer class="border-t border-stone-200 py-4 px-6 text-center text-xs text-slate-500 bg-white">
     鴻鼎菓子 iDoDo × 2026 永續智慧創新黑客松 | GEO 品牌搜尋成長引擎 PoC Dashboard
   </footer>
 

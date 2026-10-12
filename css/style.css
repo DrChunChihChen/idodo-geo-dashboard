@@ -52,3 +52,37 @@ body {
     transform: scale(1.02);
   }
 }
+
+
+/* 白色為主・鴻鼎菓子暖白主題優化 */
+body {
+  background-color: #FAF8F5 !important;
+  color: #2C1D18 !important;
+}
+
+header {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom-color: #E7E5E4 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.metric-card, .chart-card, .data-card, .dashboard-card {
+  background-color: #FFFFFF !important;
+  border-color: #E7E5E4 !important;
+  box-shadow: 0 2px 10px rgba(44, 29, 24, 0.04) !important;
+}
+
+.metric-card:hover {
+  border-color: #F59E0B !important;
+  box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.15) !important;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F5F4 !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #D6D3D1 !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A8A29E !important;
+}

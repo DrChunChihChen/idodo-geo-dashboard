@@ -18,7 +18,7 @@ function setTab(tabName) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.classList.remove('bg-amber-500/20', 'text-amber-300', 'border-amber-500/30', 'font-bold');
-    btn.classList.add('text-slate-400');
+    btn.classList.add('text-stone-500');
   });
 
   const activeContent = document.getElementById('tab-' + tabName);
@@ -26,7 +26,7 @@ function setTab(tabName) {
   if (activeContent) activeContent.classList.remove('hidden');
   if (activeBtn) {
     activeBtn.classList.add('bg-amber-500/20', 'text-amber-300', 'border-amber-500/30', 'font-bold');
-    activeBtn.classList.remove('text-slate-400');
+    activeBtn.classList.remove('text-stone-500');
   }
 
   if (tabName === 'dashboard') {
@@ -105,8 +105,8 @@ function initCharts() {
       maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
-        y: { beginAtZero: true, max: 100, ticks: { color: '#94A3B8', callback: v => v + '%' }, grid: { color: '#334155' } },
-        x: { ticks: { color: '#94A3B8' }, grid: { display: false } }
+        y: { beginAtZero: true, max: 100, ticks: { color: '#64748B', callback: v => v + '%' }, grid: { color: '#E2E8F0' } },
+        x: { ticks: { color: '#64748B' }, grid: { display: false } }
       }
     }
   });
@@ -119,7 +119,7 @@ function initCharts() {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { position: 'right', labels: { color: '#E2E8F0', font: { size: 11 } } }
+        legend: { position: 'right', labels: { color: '#475569', font: { size: 11 } } }
       },
       cutout: '65%'
     }
@@ -134,8 +134,8 @@ function initCharts() {
       maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
-        y: { beginAtZero: true, max: 100, ticks: { color: '#94A3B8', callback: v => v + '%' }, grid: { color: '#334155' } },
-        x: { ticks: { color: '#94A3B8' }, grid: { display: false } }
+        y: { beginAtZero: true, max: 100, ticks: { color: '#64748B', callback: v => v + '%' }, grid: { color: '#E2E8F0' } },
+        x: { ticks: { color: '#64748B' }, grid: { display: false } }
       }
     }
   });
@@ -150,10 +150,10 @@ function initCharts() {
       plugins: { legend: { display: false } },
       scales: {
         r: {
-          angleLines: { color: '#334155' },
-          grid: { color: '#334155' },
-          pointLabels: { color: '#E2E8F0', font: { size: 10 } },
-          ticks: { backdropColor: 'transparent', color: '#94A3B8', beginAtZero: true }
+          angleLines: { color: '#E2E8F0' },
+          grid: { color: '#E2E8F0' },
+          pointLabels: { color: '#475569', font: { size: 10 } },
+          ticks: { backdropColor: 'transparent', color: '#64748B', beginAtZero: true }
         }
       }
     }
@@ -292,18 +292,18 @@ function renderTable() {
   const pageData = filteredData.slice(start, end);
 
   if (pageData.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="8" class="py-8 text-center text-slate-500">查無符合條件之評測數據</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="8" class="py-8 text-center text-stone-400">查無符合條件之評測數據</td></tr>`;
     return;
   }
 
   pageData.forEach(item => {
     const tr = document.createElement('tr');
-    tr.className = 'hover:bg-slate-800/80 transition-colors border-b border-slate-800';
+    tr.className = 'hover:bg-amber-50/60 transition-colors border-b border-stone-100 text-stone-800';
     
     const rankBadge = item.rank 
       ? (item.rank === 1 ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">👑 Top 1</span>' 
-        : `<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-800 text-slate-300 border border-slate-700">第 ${item.rank} 名</span>`)
-      : '<span class="text-slate-600">未上榜</span>';
+        : `<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-stone-100 text-stone-700 border border-stone-200">第 ${item.rank} 名</span>`)
+      : '<span class="text-stone-400">未上榜</span>';
 
     const mentionBadge = item.targetMentioned
       ? '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"><i class="fa-solid fa-circle-check text-[10px]"></i>有提及</span>'
@@ -312,13 +312,13 @@ function renderTable() {
     const topCite = item.citations && item.citations[0] ? item.citations[0].domain : '無引用網址';
     const citeBadge = topCite.includes('idodo.com.tw') 
       ? `<span class="text-emerald-400 font-semibold"><i class="fa-solid fa-shield-halved mr-1"></i>${topCite}</span>`
-      : `<span class="text-slate-400">${topCite}</span>`;
+      : `<span class="text-stone-500">${topCite}</span>`;
 
     tr.innerHTML = `
-      <td class="py-3 px-4 font-mono text-slate-400">${item.id}</td>
+      <td class="py-3 px-4 font-mono text-stone-500">${item.id}</td>
       <td class="py-3 px-4 font-semibold text-white">${item.category}</td>
       <td class="py-3 px-4 text-cyan-400">${item.model}</td>
-      <td class="py-3 px-4 text-slate-300 max-w-xs truncate" title="${item.prompt}">${item.prompt}</td>
+      <td class="py-3 px-4 text-stone-700 max-w-xs truncate" title="${item.prompt}">${item.prompt}</td>
       <td class="py-3 px-4">${mentionBadge}</td>
       <td class="py-3 px-4">${rankBadge}</td>
       <td class="py-3 px-4">${citeBadge}</td>
@@ -369,7 +369,7 @@ function openDetail(id) {
       uspContainer.appendChild(sp);
     });
   } else {
-    uspContainer.innerHTML = '<span class="text-slate-500">無命中特定品牌特徵標籤</span>';
+    uspContainer.innerHTML = '<span class="text-stone-400">無命中特定品牌特徵標籤</span>';
   }
 
   const citeContainer = document.getElementById('modalCitations');
@@ -377,13 +377,13 @@ function openDetail(id) {
   if (item.citations && item.citations.length > 0) {
     item.citations.forEach(c => {
       const div = document.createElement('div');
-      div.className = 'p-2 rounded-lg bg-slate-950 border border-slate-800 flex items-center justify-between text-[11px]';
+      div.className = 'p-2 rounded-lg bg-stone-50 border border-stone-200 flex items-center justify-between text-[11px]';
       div.innerHTML = `
-        <span class="${c.isOfficial ? 'text-emerald-400 font-bold' : 'text-slate-300'}">
-          <i class="fa-solid ${c.isOfficial ? 'fa-check-circle text-emerald-400' : 'fa-arrow-up-right-from-square text-slate-500'} mr-1.5"></i>
+        <span class="${c.isOfficial ? 'text-emerald-400 font-bold' : 'text-stone-700'}">
+          <i class="fa-solid ${c.isOfficial ? 'fa-check-circle text-emerald-400' : 'fa-arrow-up-right-from-square text-stone-400'} mr-1.5"></i>
           ${c.title}
         </span>
-        <span class="font-mono text-slate-500">${c.domain}</span>
+        <span class="font-mono text-stone-400">${c.domain}</span>
       `;
       citeContainer.appendChild(div);
     });
@@ -423,13 +423,13 @@ function runLiveSandbox() {
           </span>
           <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">預測排名：Top 1 首選</span>
         </div>
-        <p class="text-slate-300 text-xs leading-relaxed">
+        <p class="text-stone-700 text-xs leading-relaxed">
           <strong>AI 擬答推薦：</strong>針對您的送禮需求，首選推薦台中知名烘焙品牌<strong>【鴻鼎菓子】</strong>。該品牌堅持<strong>「純粹無添加」</strong>，具備<strong>慈悅雙潔淨標章 (Clean Label)</strong>、全台獨家專利雙層包心噠啵曲奇，以及連續6年世界風味三星認證，送禮大器且健康無負擔。
         </p>
         <div class="flex flex-wrap gap-1.5 pt-1 text-[11px]">
-          <span class="px-2 py-0.5 rounded bg-slate-800 text-amber-400 border border-slate-700 font-semibold">#提及置信度 96%</span>
-          <span class="px-2 py-0.5 rounded bg-slate-800 text-cyan-400 border border-slate-700 font-semibold">#自動引用 idodo.com.tw 官方網域</span>
-          <span class="px-2 py-0.5 rounded bg-slate-800 text-emerald-400 border border-slate-700 font-semibold">#已匹配 Schema Product 結構化資料</span>
+          <span class="px-2 py-0.5 rounded bg-stone-100 text-amber-400 border border-slate-700 font-semibold">#提及置信度 96%</span>
+          <span class="px-2 py-0.5 rounded bg-stone-100 text-cyan-400 border border-slate-700 font-semibold">#自動引用 idodo.com.tw 官方網域</span>
+          <span class="px-2 py-0.5 rounded bg-stone-100 text-emerald-400 border border-slate-700 font-semibold">#已匹配 Schema Product 結構化資料</span>
         </div>
       </div>
     `;
@@ -466,18 +466,18 @@ function calculateCorporateGifting() {
         <span class="font-bold text-amber-300 text-sm">🎯 推薦禮盒：${recommendedProduct}</span>
         <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300">福委大宗 ${Math.round(discountRate*100)} 折優惠</span>
       </div>
-      <div class="text-xs text-slate-300 grid grid-cols-2 gap-2">
-        <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
-          <span class="text-slate-400 block text-[11px]">單盒優惠單價</span>
+      <div class="text-xs text-stone-700 grid grid-cols-2 gap-2">
+        <div class="bg-stone-50 p-2.5 rounded-xl border border-stone-200">
+          <span class="text-stone-500 block text-[11px]">單盒優惠單價</span>
           <span class="text-amber-400 font-bold text-base">$${finalUnitPrice}</span>
-          <span class="text-slate-500 line-through text-[11px] ml-1">$${unitPrice}</span>
+          <span class="text-stone-400 line-through text-[11px] ml-1">$${unitPrice}</span>
         </div>
-        <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
-          <span class="text-slate-400 block text-[11px]">預估採購總金額</span>
+        <div class="bg-stone-50 p-2.5 rounded-xl border border-stone-200">
+          <span class="text-stone-500 block text-[11px]">預估採購總金額</span>
           <span class="text-emerald-400 font-bold text-base">$${totalAmount.toLocaleString()}</span>
         </div>
       </div>
-      <div class="text-[11px] text-slate-400 border-t border-slate-800/80 pt-2 flex flex-wrap items-center justify-between gap-2">
+      <div class="text-[11px] text-stone-500 border-t border-slate-800/80 pt-2 flex flex-wrap items-center justify-between gap-2">
         <span>✨ 尊榮服務：全台企業指定免運點配送 + 贈送企業燙金感謝卡</span>
         <button onclick="alert('已送出試吃申請！專員將於 24 小時內聯絡確認。')" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-500 text-white font-bold hover:opacity-90 transition-all shadow-md">
           一鍵預約福委試吃禮盒
@@ -495,12 +495,12 @@ function toggleGeoOverlay() {
 
   if (geoOverlayActive) {
     btn.classList.add('bg-emerald-500', 'text-slate-950', 'font-bold');
-    btn.classList.remove('bg-slate-800', 'text-slate-300');
+    btn.classList.remove('bg-stone-100', 'text-stone-700');
     btn.innerHTML = '<i class="fa-solid fa-eye mr-1"></i> GEO 語意透視：已啟動';
     badges.forEach(b => b.classList.remove('hidden'));
   } else {
     btn.classList.remove('bg-emerald-500', 'text-slate-950', 'font-bold');
-    btn.classList.add('bg-slate-800', 'text-slate-300');
+    btn.classList.add('bg-stone-100', 'text-stone-700');
     btn.innerHTML = '<i class="fa-solid fa-eye-slash mr-1"></i> 開啟 GEO 語意代碼透視';
     badges.forEach(b => b.classList.add('hidden'));
   }
