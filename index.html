@@ -45,6 +45,9 @@
         <button id="btn-tab-auditor" onclick="setTab('auditor')" class="tab-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-stone-500 hover:text-stone-900 flex items-center gap-1.5">
           <i class="fa-solid fa-stethoscope"></i> 官網 AI 體檢與 Schema
         </button>
+        <button id="btn-tab-ugc" onclick="setTab('ugc')" class="tab-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-stone-500 hover:text-stone-900 flex items-center gap-1.5">
+          <i class="fa-solid fa-comments"></i> 6,914 則口碑探勘 (UGC)
+        </button>
       </nav>
 
       <!-- 檢測模式 (在儀表板分頁時顯示) -->
@@ -596,6 +599,149 @@
     </div>
   </section>
 
+  <!-- ========================================== -->
+  <!-- TAB 4: 6,914 則口碑語意探勘 (UGC & Social Proof) -->
+  <!-- ========================================== -->
+  <section id="tab-ugc" class="tab-content max-w-7xl mx-auto px-6 py-6 flex-1 w-full space-y-6 hidden">
+
+    <!-- 頂部五大指標卡片 -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+      <div class="bg-white border border-stone-200 shadow-sm p-4 rounded-2xl relative overflow-hidden">
+        <div class="flex items-center justify-between text-stone-500 text-xs font-medium">
+          <span>Google 總評論數</span>
+          <i class="fa-solid fa-map-location-dot text-amber-500 text-base"></i>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-2xl font-extrabold text-stone-900">6,914</span>
+          <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">三大門市</span>
+        </div>
+        <p class="mt-1.5 text-[11px] text-stone-500">豐原 3047 / 清水 2040 / 南屯 1827</p>
+      </div>
+
+      <div class="bg-white border border-stone-200 shadow-sm p-4 rounded-2xl relative overflow-hidden">
+        <div class="flex items-center justify-between text-stone-500 text-xs font-medium">
+          <span>真實顧客平均評分</span>
+          <i class="fa-solid fa-star text-amber-500 text-base"></i>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-2xl font-extrabold text-stone-900">4.87 ★</span>
+          <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">五星率 92.3%</span>
+        </div>
+        <p class="mt-1.5 text-[11px] text-stone-500">6,383 則五星滿分好評</p>
+      </div>
+
+      <div class="bg-white border border-stone-200 shadow-sm p-4 rounded-2xl relative overflow-hidden">
+        <div class="flex items-center justify-between text-stone-500 text-xs font-medium">
+          <span>店家互動回覆率</span>
+          <i class="fa-solid fa-reply text-cyan-600 text-base"></i>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-2xl font-extrabold text-stone-900">81.4%</span>
+          <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-cyan-50 text-cyan-800 border border-cyan-200">5,629 則已回覆</span>
+        </div>
+        <p class="mt-1.5 text-[11px] text-stone-500">超高互動強化在地搜尋權重</p>
+      </div>
+
+      <div class="bg-white border border-stone-200 shadow-sm p-4 rounded-2xl relative overflow-hidden">
+        <div class="flex items-center justify-between text-stone-500 text-xs font-medium">
+          <span>GEO 黃金證言資產</span>
+          <i class="fa-solid fa-crown text-amber-500 text-base"></i>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-2xl font-extrabold text-stone-900">107 筆</span>
+          <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-300 font-bold">Level 4~5</span>
+        </div>
+        <p class="mt-1.5 text-[11px] text-stone-500">含完整商品、場景與痛點解方</p>
+      </div>
+
+      <div class="bg-white border border-stone-200 shadow-sm p-4 rounded-2xl relative overflow-hidden">
+        <div class="flex items-center justify-between text-stone-500 text-xs font-medium">
+          <span>打標可信任分數</span>
+          <i class="fa-solid fa-shield-halved text-emerald-600 text-base"></i>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-2xl font-extrabold text-stone-900">89.7%</span>
+          <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">嚴格防幻覺</span>
+        </div>
+        <p class="mt-1.5 text-[11px] text-stone-500">多維特徵與上下文一致性校驗</p>
+      </div>
+    </div>
+
+    <!-- 篩選器與說明 -->
+    <div class="bg-white border border-stone-200 shadow-sm p-5 rounded-2xl space-y-3">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-base font-bold text-stone-900 flex items-center gap-2">
+            <i class="fa-solid fa-comments text-amber-500"></i> AI 推薦引用之「黃金口碑語意庫」穿透檢索
+          </h2>
+          <p class="text-xs text-stone-500">經由 Python 語意分析引擎對 6,914 筆真實評論打標，提煉出最容易被 Perplexity 與 Google Gemini 作為推薦依據之高權重證言</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-stone-500">共篩選出 <span id="ugcResultCount" class="font-bold text-amber-900">107</span> 筆黃金證言</span>
+        </div>
+      </div>
+
+      <!-- 篩選列 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-1">
+        <div>
+          <label class="text-[11px] font-semibold text-stone-600 block mb-1">門市來源</label>
+          <select id="filterUgcStore" onchange="applyUgcFilters()" class="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:border-amber-500 shadow-sm">
+            <option value="all">全部門市 (6,914 筆)</option>
+            <option value="豐原旗艦店">豐原旗艦店 (3,047 筆)</option>
+            <option value="清水休息站">清水休息站 (2,040 筆)</option>
+            <option value="南屯夢想店">南屯夢想店 (1,827 筆)</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-[11px] font-semibold text-stone-600 block mb-1">產品與情境核心標籤</label>
+          <select id="filterUgcTag" onchange="applyUgcFilters()" class="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:border-amber-500 shadow-sm">
+            <option value="all">全部主題標籤</option>
+            <option value="雙首獎檸檬酥">🍋 雙首獎檸檬酥 (高頻提及)</option>
+            <option value="噠啵包心曲奇">🍪 噠啵包心曲奇 (專利熱門)</option>
+            <option value="經典曲奇餅乾">🍪 經典曲奇餅乾</option>
+            <option value="心願堅果塔">🌰 心願堅果塔</option>
+            <option value="長輩健康送禮">👴 長輩健康送禮 (養生)</option>
+            <option value="減糖低負擔">🍃 減糖低負擔 / 不死甜</option>
+            <option value="在地伴手禮/觀光">🎁 在地伴手禮 / 觀光等路</option>
+            <option value="企業福委/辦公室">🏢 企業福委 / 辦公室分食</option>
+            <option value="包裝精美/體面">🎀 包裝精美 / 附提袋體面</option>
+            <option value="門市體驗/試吃">☕ 門市試吃大方 / 奉茶</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-[11px] font-semibold text-stone-600 block mb-1">GEO 價值等級</label>
+          <select id="filterUgcLevel" onchange="applyUgcFilters()" class="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:border-amber-500 shadow-sm">
+            <option value="all">Level 4 & 5 (高價值與黃金資產)</option>
+            <option value="5">👑 僅看 Level 5 黃金語意資產 (64筆)</option>
+            <option value="4">⭐ 僅看 Level 4 情境證言 (67筆)</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-[11px] font-semibold text-stone-600 block mb-1">文字關鍵字搜尋</label>
+          <input id="inputUgcSearch" type="text" oninput="applyUgcFilters()" placeholder="搜尋顧客評論字詞..." class="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:border-amber-500 shadow-sm">
+        </div>
+      </div>
+    </div>
+
+    <!-- 證言卡片清單容器 -->
+    <div id="ugcCardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- 動態渲染卡片 -->
+    </div>
+
+    <!-- 底部：GEO 策略轉化技術深度解讀 -->
+    <div class="bg-amber-50/70 border border-amber-200/80 p-5 rounded-2xl space-y-2 text-xs text-stone-700 shadow-sm">
+      <div class="font-bold text-amber-950 flex items-center gap-2">
+        <i class="fa-solid fa-lightbulb text-amber-600"></i>
+        <span>如何將這些口碑轉化為 GEO 搜尋第一名的推薦依據？</span>
+      </div>
+      <p class="leading-relaxed text-stone-600">
+        Google Gemini 與 Perplexity 在執行「送禮與伴手禮推薦」時，核心依據為 <strong>Google 地圖實體圖譜 (Knowledge Graph)</strong> 與 <strong>UGC 社交證明</strong>。
+        透過將這 107 筆黃金評價分類封裝為官網的 <code>Review</code> 與 <code>AggregateRating</code> 結構化標籤（4.87 星 / 6,914 則評價），AI 爬蟲便能精準採信「減糖不死甜、清水站伴手禮首選、專利雙層包心」等真實顧客特徵，將品牌在 AI 推薦排名中穩固推升至 Top 1！
+      </p>
+    </div>
+
+  </section>
+
   <!-- 詳情彈窗 -->
   <div id="detailModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-white border border-stone-200 rounded-2xl max-w-2xl w-full p-6 space-y-4 shadow-2xl relative max-h-[90vh] overflow-y-auto">
@@ -659,6 +805,7 @@
 
   <!-- 載入模擬數據與邏輯腳本 -->
   <script src="js/data.js"></script>
+  <script src="js/ugc_data.js"></script>
   <script src="js/app.js"></script>
   <!-- 鴻鼎菓子 智能甜點顧問【嘟嘟小專員】浮動客服 Widget -->
   <script src="js/dodo-chat.js"></script>

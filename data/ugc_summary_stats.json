@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "total_reviews": 6914,
+    "processed_time": "2026-10-12 21:43:48",
+    "elapsed_seconds": 0.16,
+    "average_confidence_score": 0.8971
+  },
+  "geo_score_distribution": {
+    "Level_0": {
+      "count": 2761,
+      "percentage": 39.93
+    },
+    "Level_1": {
+      "count": 2106,
+      "percentage": 30.46
+    },
+    "Level_2": {
+      "count": 1208,
+      "percentage": 17.47
+    },
+    "Level_3": {
+      "count": 708,
+      "percentage": 10.24
+    },
+    "Level_4": {
+      "count": 67,
+      "percentage": 0.97
+    },
+    "Level_5": {
+      "count": 64,
+      "percentage": 0.93
+    }
+  },
+  "sentiment_distribution": {
+    "Positive": {
+      "count": 6695,
+      "percentage": 96.83
+    },
+    "Neutral": {
+      "count": 109,
+      "percentage": 1.58
+    },
+    "Negative": {
+      "count": 110,
+      "percentage": 1.59
+    }
+  },
+  "golden_testimonials_count": 107,
+  "product_entity_mentions": {
+    "節慶限定禮盒": 92,
+    "雙首獎檸檬酥": 618,
+    "瞇瞇眼波士頓派": 71,
+    "鳳凰酥/鳳梨酥": 61,
+    "噠啵包心曲奇": 58,
+    "經典曲奇餅乾": 1371,
+    "心願堅果塔": 179
+  },
+  "context_persona_mentions": {
+    "在地伴手禮/觀光": 276,
+    "企業福委/辦公室": 35,
+    "自用/下午茶解饞": 100,
+    "長輩健康送禮": 24,
+    "婚禮喜餅/彌月": 20
+  },
+  "attribute_usp_mentions": {
+    "門市體驗/試吃": 636,
+    "交通便利/好停車": 43,
+    "包裝精美/體面": 173,
+    "服務優良/親切": 919,
+    "口感酥軟/化口": 113,
+    "減糖低負擔": 103
+  }
+}

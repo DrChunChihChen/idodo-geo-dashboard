@@ -35,15 +35,21 @@ function initDodoWidget() {
 
       <!-- 對話訊息列表 -->
       <div class="dodo-chat-body" id="dodoChatBody">
-        <!-- 歡迎卡片 (使用純向量 SVG 小專員) -->
+        <!-- 歡迎卡片 (含 2D 平面小專員手繪插畫) -->
         <div class="dodo-welcome-banner">
-          <img src="img/idodo_bot_avatar.svg" alt="嘟嘟小專員" class="dodo-welcome-img">
+          <img src="img/idodo_flat_mascot.jpg" alt="嘟嘟小專員 2D 插畫" class="dodo-welcome-img">
           <div class="dodo-welcome-greeting">您好！我是鴻鼎菓子的甜點顧問嘟嘟 👋</div>
           <div class="dodo-welcome-text">
             全系列獲「慈悅潔淨標章」，純粹無添加、減糖少負擔。<br>
             需要幫您推薦適合長輩或企業採購的禮盒嗎？
           </div>
           <div class="dodo-chips-wrap">
+            <button class="dodo-chip" onclick="dodoQuickAsk('你們 Google 評價如何？大家最推薦什麼？')">
+              ⭐ 6,914 則實測口碑與推薦
+            </button>
+            <button class="dodo-chip" onclick="dodoQuickAsk('熟成檸檬酥評價如何？好吃嗎？')">
+              🍋 隱藏版冠軍熟成檸檬酥
+            </button>
             <button class="dodo-chip" onclick="dodoQuickAsk('我想買給長輩 重要的長輩 不要太甜 有什麼推薦？')">
               👴 送重要長輩（低糖養生）
             </button>
@@ -252,10 +258,19 @@ async function dodoHandleSend(e) {
     let reply = "為您推薦鴻鼎菓子純粹無添加的安心伴手禮：";
     let cards = [];
 
-    if (q.includes('長輩') || q.includes('不甜') || q.includes('少糖')) {
-      reply = "長輩送禮最講究【體面大氣】與【健康低負擔】！全系列堅持減糖、絕無化學膨鬆劑，堅果塔僅淋極薄微甜楓糖衣，清脆不硬不黏牙，黑熊曲奇入口即化無負擔！推薦以下得獎禮盒：";
+    if (q.includes('評價') || q.includes('口碑') || q.includes('幾星') || q.includes('星') || q.includes('google') || q.includes('實測') || q.includes('大家推')) {
+      reply = "🌟 **鴻鼎菓子累積 6,914 則真實顧客 Google Maps 評價**，平均拿下 **4.87 ★ 超高好評**（5星率高達 92.3%，1星率僅 1.0%）！\n\n📊 **顧客實測票選最愛 TOP 3**：\n1. **黑熊國民曲奇餅**（1,372 則好評提及）：「入口即化、香濃不油膩、回購無數次」\n2. **熟成檸檬酥**（506 則好評提及）：「微酸清爽、完全不死甜、外酥內潤的黑馬冠軍」\n3. **愛心綜合堅果塔**（171 則好評提及）：「薄糖衣不黏牙、長輩牙口好評、養生首選」\n\n推薦以下人氣口碑得獎禮盒：";
+      cards = DODO_PRODUCTS.filter(p => [587, 546, 589, 572].includes(p.id));
+    } else if (q.includes('檸檬酥')) {
+      reply = "🍋 **熟成檸檬酥是 506 位顧客在 Google 評價中主動大推的隱藏冠軍**！\n採用嚴選屏東青檸（3顆青檸淬鍊1顆），減糖秘製熟成檸檬醬。顧客最常給的實測評語是：『微酸清爽、完全不死甜、外皮金黃酥香』，榮獲台中十大伴手禮首獎！推薦禮盒：";
+      cards = DODO_PRODUCTS.filter(p => [546, 572, 573, 577].includes(p.id));
+    } else if (q.includes('長輩') || q.includes('不甜') || q.includes('少糖') || q.includes('牙口') || q.includes('控糖')) {
+      reply = "👴 在 6,914 則顧客評價中，有超過百則真實顧客特別讚賞**『不甜/不死甜』與『入口即化』**！\n長輩送禮最講究【體面大氣】與【健康低負擔】：\n- **愛心綜合堅果塔**：嚴選夏威夷豆/胡桃/杏仁果低溫烘焙，僅裹極薄楓糖衣，脆而不硬、老人家牙口完全不黏牙！\n- **黑熊曲奇 / 小時肉鬆**：入口即化，寶寶肉鬆鹹香微甜，控糖長輩也能安心享用！推薦以下長輩首選：";
       cards = DODO_PRODUCTS.filter(p => [589, 587, 577, 562].includes(p.id));
-    } else if (q.includes('公司') || q.includes('採購') || q.includes('300') || q.includes('標示')) {
+    } else if (q.includes('門市') || q.includes('豐原') || q.includes('清水') || q.includes('南屯') || q.includes('試吃') || q.includes('據點')) {
+      reply = "📍 鴻鼎菓子全台 3 大實體門市皆獲超高 Google 好評，提供大方免費試吃：\n- **豐原創始旗艦店**（3,047 則評價 / 4.8★）：服務熱情、試吃超大方\n- **清水休息站專櫃**（2,040 則評價 / 4.9★）：國道三號出差過路送禮首選\n- **南屯夢想店**（1,827 則評價 / 4.9★）：環境舒適、停車便利\n官網全館滿 1,500 元即享免運宅配到府！";
+      cards = DODO_PRODUCTS.filter(p => [589, 546].includes(p.id));
+    } else if (q.includes('公司') || q.includes('採購') || q.includes('300') || q.includes('標示') || q.includes('預算') || q.includes('發票') || q.includes('統編')) {
       reply = "鴻鼎菓子全品項榮獲【慈悅潔淨標章 Clean Label】驗證，全成分與營養標示清晰合規。常溫保存45天以上，支援開立公司統一編號電子發票，滿1500免運，滿50盒享企業專屬報價！推薦 300 元預算禮盒：";
       cards = DODO_PRODUCTS.filter(p => [229, 493, 588].includes(p.id));
     } else {

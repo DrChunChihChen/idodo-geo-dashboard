@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateKPIs();
 });
 
-// 分頁切換 (儀表板 vs 模擬官網 vs 體檢工具)
+// 分頁切換 (儀表板 vs 模擬官網 vs 體檢工具 vs UGC口碑探勘)
 function setTab(tabName) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -29,10 +29,20 @@ function setTab(tabName) {
     activeBtn.classList.remove('text-stone-500');
   }
 
+  const modeContainer = document.getElementById('modeSwitchContainer');
+  if (modeContainer) {
+    if (tabName === 'dashboard') modeContainer.classList.remove('hidden');
+    else modeContainer.classList.add('hidden');
+  }
+
   if (tabName === 'dashboard') {
     setTimeout(() => {
       Object.values(charts).forEach(c => c.resize());
     }, 100);
+  }
+
+  if (tabName === 'ugc') {
+    initUgcTab();
   }
 }
 
@@ -576,3 +586,165 @@ function exportCSV() {
   link.click();
   document.body.removeChild(link);
 }
+
+// ==========================================
+// UGC 口碑與 GEO 語意探勘模組
+// ==========================================
+let ugcInitialized = false;
+
+function initUgcTab() {
+  if (!ugcInitialized) {
+    ugcInitialized = true;
+  }
+  applyUgcFilters();
+}
+
+function applyUgcFilters() {
+  if (!window.GOLDEN_TESTIMONIALS) return;
+
+  const storeFilter = document.getElementById('filterUgcStore')?.value || 'all';
+  const tagFilter = document.getElementById('filterUgcTag')?.value || 'all';
+  const levelFilter = document.getElementById('filterUgcLevel')?.value || 'all';
+  const searchKeyword = (document.getElementById('inputUgcSearch')?.value || '').trim().toLowerCase();
+
+  const filtered = window.GOLDEN_TESTIMONIALS.filter(item => {
+    // 1. 門市
+    if (storeFilter !== 'all' && !item.place.includes(storeFilter)) return false;
+
+    // 2. 標籤 (檢查 products, contexts, attributes)
+    if (tagFilter !== 'all') {
+      const allTags = [...(item.products || []), ...(item.contexts || []), ...(item.attributes || [])];
+      if (!allTags.includes(tagFilter)) return false;
+    }
+
+    // 3. GEO 等級
+    if (levelFilter !== 'all') {
+      if (item.geo_score != parseInt(levelFilter)) return false;
+    }
+
+    // 4. 關鍵字搜尋
+    if (searchKeyword) {
+      const textMatch = item.text.toLowerCase().includes(searchKeyword);
+      const tagMatch = [...(item.products || []), ...(item.contexts || []), ...(item.attributes || [])].some(t => t.toLowerCase().includes(searchKeyword));
+      if (!textMatch && !tagMatch) return false;
+    }
+
+    return true;
+  });
+
+  const countEl = document.getElementById('ugcResultCount');
+  if (countEl) countEl.innerText = filtered.length;
+
+  renderUgcCards(filtered);
+}
+
+function renderUgcCards(list) {
+  const container = document.getElementById('ugcCardsContainer');
+  if (!container) return;
+
+  if (list.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full py-12 text-center text-stone-400 bg-white rounded-2xl border border-stone-200">
+        <i class="fa-solid fa-filter text-2xl mb-2 text-stone-300"></i>
+        <p class="text-xs">查無符合篩選條件之黃金證言，請嘗試調整標籤或門市</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = list.map((item, idx) => {
+    const cleanStore = item.place.replace('鴻鼎菓子_', '');
+    const stars = '★'.repeat(Math.round(item.rating));
+    
+    // 標籤膠囊
+    const prodBadges = (item.products || []).map(p => 
+      `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-50 text-amber-900 border border-amber-200">#${p}</span>`
+    ).join(' ');
+
+    const ctxBadges = (item.contexts || []).map(c => 
+      `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-cyan-50 text-cyan-800 border border-cyan-200">#${c}</span>`
+    ).join(' ');
+
+    const attrBadges = (item.attributes || []).map(a => 
+      `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">#${a}</span>`
+    ).join(' ');
+
+    const geoBadge = item.geo_score === 5 
+      ? `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-gradient-to-r from-amber-400 to-amber-500 text-stone-950 shadow-xs">👑 GEO Level 5 黃金資產</span>`
+      : `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">⭐ GEO Level 4 情境證言</span>`;
+
+    const confPct = Math.round((item.confidence_score || 0.9) * 100);
+
+    return `
+      <div class="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm hover:border-amber-400 hover:shadow-md transition-all flex flex-col justify-between space-y-3.5">
+        <div class="space-y-2.5">
+          <!-- 卡片頂部資訊 -->
+          <div class="flex items-center justify-between text-xs pb-2 border-b border-stone-100">
+            <span class="font-bold text-stone-800 flex items-center gap-1.5">
+              <i class="fa-solid fa-location-dot text-amber-500"></i> ${cleanStore}
+            </span>
+            <div class="flex items-center gap-1 text-amber-400 text-xs">
+              ${stars} <span class="text-[11px] font-bold text-stone-600 ml-1">${item.rating}.0</span>
+            </div>
+          </div>
+
+          <!-- GEO 等級與置信度 -->
+          <div class="flex items-center justify-between gap-2">
+            ${geoBadge}
+            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <i class="fa-solid fa-shield-halved text-[9px] mr-1"></i>置信度 ${confPct}%
+            </span>
+          </div>
+
+          <!-- 語意標籤列 -->
+          <div class="flex flex-wrap gap-1">
+            ${prodBadges} ${ctxBadges} ${attrBadges}
+          </div>
+
+          <!-- 顧客真實評論本文 -->
+          <p class="text-xs text-stone-700 leading-relaxed line-clamp-4 hover:line-clamp-none transition-all cursor-pointer whitespace-pre-line bg-stone-50/50 p-2.5 rounded-xl border border-stone-100" title="點擊展開全文">
+            "${item.text}"
+          </p>
+        </div>
+
+        <!-- 底部功能：一鍵複製 Review Schema -->
+        <div class="pt-2 border-t border-stone-100 flex items-center justify-between text-[11px]">
+          <span class="text-stone-400 font-mono text-[10px]">${item.date || '近期真實顧客'}</span>
+          <button onclick="copyReviewSchema(${idx})" class="text-amber-800 hover:text-amber-950 font-bold hover:underline flex items-center gap-1">
+            <i class="fa-solid fa-code text-[10px]"></i> 複製 Review Schema
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function copyReviewSchema(index) {
+  if (!window.GOLDEN_TESTIMONIALS || !window.GOLDEN_TESTIMONIALS[index]) return;
+  const item = window.GOLDEN_TESTIMONIALS[index];
+  
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "itemReviewed": {
+      "@type": "Bakery",
+      "name": "鴻鼎菓子 " + item.place.replace('鴻鼎菓子_', ''),
+      "url": "https://www.idodo.com.tw"
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": item.rating,
+      "bestRating": "5"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Google Maps 驗證顧客"
+    },
+    "reviewBody": item.text,
+    "datePublished": item.date || "2026-10-01"
+  };
+
+  navigator.clipboard.writeText(JSON.stringify(schema, null, 2));
+  alert(`已複製該證言的 Schema.org Review 結構化標籤！\nAI 爬蟲可直接解析「${item.products.join('、') || '商品'}」之真實評價。`);
+}
+
