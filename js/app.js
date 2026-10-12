@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function setTab(tabName) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
   document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.classList.remove('bg-amber-500/20', 'text-amber-300', 'border-amber-500/30', 'font-bold');
+    btn.classList.remove('bg-amber-100', 'text-amber-900', 'border-amber-300', 'border', 'font-bold', 'shadow-sm', 'bg-amber-500/20', 'text-amber-300', 'border-amber-500/30');
     btn.classList.add('text-stone-500');
   });
 
@@ -25,7 +25,7 @@ function setTab(tabName) {
   const activeBtn = document.getElementById('btn-tab-' + tabName);
   if (activeContent) activeContent.classList.remove('hidden');
   if (activeBtn) {
-    activeBtn.classList.add('bg-amber-500/20', 'text-amber-300', 'border-amber-500/30', 'font-bold');
+    activeBtn.classList.add('bg-amber-100', 'text-amber-900', 'border-amber-300', 'border', 'font-bold', 'shadow-sm');
     activeBtn.classList.remove('text-stone-500');
   }
 
@@ -40,12 +40,30 @@ function setTab(tabName) {
 function setMode(mode) {
   currentMode = mode;
   document.querySelectorAll('.mode-btn').forEach(btn => {
-    btn.classList.remove('active-mode', 'ring-2', 'ring-amber-500');
+    btn.classList.remove(
+      'active-mode', 'ring-2', 'ring-amber-500', 'shadow-sm',
+      'bg-emerald-100', 'text-emerald-800', 'border', 'border-emerald-300',
+      'bg-rose-100', 'text-rose-800', 'border-rose-300',
+      'bg-stone-200', 'text-stone-900'
+    );
+    btn.classList.add('text-stone-600');
   });
   
-  if (mode === 'all') document.getElementById('btnModeAll').classList.add('active-mode');
-  if (mode === 'baseline') document.getElementById('btnModeBaseline').classList.add('active-mode');
-  if (mode === 'optimized') document.getElementById('btnModeOptimized').classList.add('active-mode');
+  if (mode === 'all') {
+    const b = document.getElementById('btnModeAll');
+    b.classList.add('active-mode', 'bg-stone-200', 'text-stone-900', 'font-bold', 'shadow-sm');
+    b.classList.remove('text-stone-600');
+  }
+  if (mode === 'baseline') {
+    const b = document.getElementById('btnModeBaseline');
+    b.classList.add('active-mode', 'bg-rose-100', 'text-rose-800', 'border', 'border-rose-300', 'font-bold', 'shadow-sm');
+    b.classList.remove('text-stone-600');
+  }
+  if (mode === 'optimized') {
+    const b = document.getElementById('btnModeOptimized');
+    b.classList.add('active-mode', 'bg-emerald-100', 'text-emerald-800', 'border', 'border-emerald-300', 'font-bold', 'shadow-sm');
+    b.classList.remove('text-stone-600');
+  }
 
   filterDataByMode();
   updateKPIs();
@@ -301,29 +319,29 @@ function renderTable() {
     tr.className = 'hover:bg-amber-50/60 transition-colors border-b border-stone-100 text-stone-800';
     
     const rankBadge = item.rank 
-      ? (item.rank === 1 ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">👑 Top 1</span>' 
+      ? (item.rank === 1 ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300 shadow-xs">👑 Top 1</span>' 
         : `<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-stone-100 text-stone-700 border border-stone-200">第 ${item.rank} 名</span>`)
       : '<span class="text-stone-400">未上榜</span>';
 
     const mentionBadge = item.targetMentioned
-      ? '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"><i class="fa-solid fa-circle-check text-[10px]"></i>有提及</span>'
-      : '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-rose-500/10 text-rose-400 border border-rose-500/20"><i class="fa-solid fa-circle-xmark text-[10px]"></i>未提及</span>';
+      ? '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-300"><i class="fa-solid fa-circle-check text-[10px] text-emerald-600"></i>有提及</span>'
+      : '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-rose-50 text-rose-700 border border-rose-200"><i class="fa-solid fa-circle-xmark text-[10px] text-rose-500"></i>未提及</span>';
 
     const topCite = item.citations && item.citations[0] ? item.citations[0].domain : '無引用網址';
     const citeBadge = topCite.includes('idodo.com.tw') 
-      ? `<span class="text-emerald-400 font-semibold"><i class="fa-solid fa-shield-halved mr-1"></i>${topCite}</span>`
+      ? `<span class="text-emerald-700 font-bold"><i class="fa-solid fa-shield-halved mr-1"></i>${topCite}</span>`
       : `<span class="text-stone-500">${topCite}</span>`;
 
     tr.innerHTML = `
       <td class="py-3 px-4 font-mono text-stone-500">${item.id}</td>
-      <td class="py-3 px-4 font-semibold text-white">${item.category}</td>
-      <td class="py-3 px-4 text-cyan-400">${item.model}</td>
+      <td class="py-3 px-4 font-bold text-stone-900">${item.category}</td>
+      <td class="py-3 px-4 font-medium text-cyan-800">${item.model}</td>
       <td class="py-3 px-4 text-stone-700 max-w-xs truncate" title="${item.prompt}">${item.prompt}</td>
       <td class="py-3 px-4">${mentionBadge}</td>
       <td class="py-3 px-4">${rankBadge}</td>
       <td class="py-3 px-4">${citeBadge}</td>
       <td class="py-3 px-4 text-center">
-        <button onclick="openDetail('${item.id}')" class="px-2.5 py-1 text-[11px] rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 font-semibold transition-all">
+        <button onclick="openDetail('${item.id}')" class="px-3 py-1 text-[11px] rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-bold transition-all shadow-sm">
           詳情
         </button>
       </td>
@@ -356,7 +374,7 @@ function openDetail(id) {
   document.getElementById('modalCat').innerText = item.category;
   document.getElementById('modalModel').innerText = item.model;
   document.getElementById('modalRank').innerHTML = item.rank ? `第 ${item.rank} 名` : '未上榜';
-  document.getElementById('modalMode').innerHTML = item.isOptimized ? '<span class="text-emerald-400">GEO 優化後</span>' : '<span class="text-rose-400">現況基準</span>';
+  document.getElementById('modalMode').innerHTML = item.isOptimized ? '<span class="text-emerald-700 font-bold">GEO 優化後</span>' : '<span class="text-rose-700 font-bold">現況基準</span>';
   document.getElementById('modalAnswer').innerText = item.answerSnippet;
 
   const uspContainer = document.getElementById('modalUSPs');
@@ -364,7 +382,7 @@ function openDetail(id) {
   if (item.hitUSPs && item.hitUSPs.length > 0) {
     item.hitUSPs.forEach(u => {
       const sp = document.createElement('span');
-      sp.className = 'px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-300 border border-amber-500/30 text-[11px] font-semibold';
+      sp.className = 'px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-300 text-[11px] font-semibold';
       sp.innerText = '#' + u;
       uspContainer.appendChild(sp);
     });
@@ -379,8 +397,8 @@ function openDetail(id) {
       const div = document.createElement('div');
       div.className = 'p-2 rounded-lg bg-stone-50 border border-stone-200 flex items-center justify-between text-[11px]';
       div.innerHTML = `
-        <span class="${c.isOfficial ? 'text-emerald-400 font-bold' : 'text-stone-700'}">
-          <i class="fa-solid ${c.isOfficial ? 'fa-check-circle text-emerald-400' : 'fa-arrow-up-right-from-square text-stone-400'} mr-1.5"></i>
+        <span class="${c.isOfficial ? 'text-emerald-700 font-bold' : 'text-stone-700'}">
+          <i class="fa-solid ${c.isOfficial ? 'fa-check-circle text-emerald-600' : 'fa-arrow-up-right-from-square text-stone-400'} mr-1.5"></i>
           ${c.title}
         </span>
         <span class="font-mono text-stone-400">${c.domain}</span>
@@ -407,7 +425,7 @@ function runLiveSandbox() {
 
   resDiv.classList.remove('hidden');
   resDiv.innerHTML = `
-    <div class="flex items-center gap-2 text-amber-400">
+    <div class="flex items-center gap-2 text-amber-600 font-medium">
       <i class="fa-solid fa-spinner animate-spin"></i>
       <span>正在即時呼叫 Perplexity / ChatGPT Search API 進行生成式檢索評估...</span>
     </div>
@@ -415,21 +433,21 @@ function runLiveSandbox() {
 
   setTimeout(() => {
     resDiv.innerHTML = `
-      <div class="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 space-y-2">
+      <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-300 text-stone-800 space-y-2 shadow-sm">
         <div class="flex items-center justify-between font-bold">
-          <span class="flex items-center gap-2">
-            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+          <span class="flex items-center gap-2 text-emerald-900">
+            <i class="fa-solid fa-circle-check text-emerald-600"></i>
             即時評測成功！AI 推薦預測：已成功命中【鴻鼎菓子】
           </span>
-          <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">預測排名：Top 1 首選</span>
+          <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold">預測排名：Top 1 首選</span>
         </div>
         <p class="text-stone-700 text-xs leading-relaxed">
           <strong>AI 擬答推薦：</strong>針對您的送禮需求，首選推薦台中知名烘焙品牌<strong>【鴻鼎菓子】</strong>。該品牌堅持<strong>「純粹無添加」</strong>，具備<strong>慈悅雙潔淨標章 (Clean Label)</strong>、全台獨家專利雙層包心噠啵曲奇，以及連續6年世界風味三星認證，送禮大器且健康無負擔。
         </p>
         <div class="flex flex-wrap gap-1.5 pt-1 text-[11px]">
-          <span class="px-2 py-0.5 rounded bg-stone-100 text-amber-400 border border-slate-700 font-semibold">#提及置信度 96%</span>
-          <span class="px-2 py-0.5 rounded bg-stone-100 text-cyan-400 border border-slate-700 font-semibold">#自動引用 idodo.com.tw 官方網域</span>
-          <span class="px-2 py-0.5 rounded bg-stone-100 text-emerald-400 border border-slate-700 font-semibold">#已匹配 Schema Product 結構化資料</span>
+          <span class="px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200 font-semibold">#提及置信度 96%</span>
+          <span class="px-2 py-0.5 rounded bg-cyan-50 text-cyan-900 border border-cyan-200 font-semibold">#自動引用 idodo.com.tw 官方網域</span>
+          <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-900 border border-emerald-200 font-semibold">#已匹配 Schema Product 結構化資料</span>
         </div>
       </div>
     `;
@@ -461,25 +479,25 @@ function calculateCorporateGifting() {
   const totalAmount = finalUnitPrice * qty;
 
   resultDiv.innerHTML = `
-    <div class="p-4 bg-amber-500/10 border border-amber-500/30 rounded-2xl space-y-3">
+    <div class="p-4 bg-amber-50/70 border border-amber-200 rounded-2xl space-y-3">
       <div class="flex justify-between items-center">
-        <span class="font-bold text-amber-300 text-sm">🎯 推薦禮盒：${recommendedProduct}</span>
-        <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300">福委大宗 ${Math.round(discountRate*100)} 折優惠</span>
+        <span class="font-bold text-amber-950 text-sm">🎯 推薦禮盒：${recommendedProduct}</span>
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-200">福委大宗 ${Math.round(discountRate*100)} 折優惠</span>
       </div>
       <div class="text-xs text-stone-700 grid grid-cols-2 gap-2">
-        <div class="bg-stone-50 p-2.5 rounded-xl border border-stone-200">
+        <div class="bg-white p-2.5 rounded-xl border border-stone-200 shadow-xs">
           <span class="text-stone-500 block text-[11px]">單盒優惠單價</span>
-          <span class="text-amber-400 font-bold text-base">$${finalUnitPrice}</span>
+          <span class="text-amber-800 font-bold text-base">$${finalUnitPrice}</span>
           <span class="text-stone-400 line-through text-[11px] ml-1">$${unitPrice}</span>
         </div>
-        <div class="bg-stone-50 p-2.5 rounded-xl border border-stone-200">
+        <div class="bg-white p-2.5 rounded-xl border border-stone-200 shadow-xs">
           <span class="text-stone-500 block text-[11px]">預估採購總金額</span>
-          <span class="text-emerald-400 font-bold text-base">$${totalAmount.toLocaleString()}</span>
+          <span class="text-emerald-700 font-bold text-base">$${totalAmount.toLocaleString()}</span>
         </div>
       </div>
-      <div class="text-[11px] text-stone-500 border-t border-slate-800/80 pt-2 flex flex-wrap items-center justify-between gap-2">
+      <div class="text-[11px] text-stone-600 border-t border-stone-200 pt-2 flex flex-wrap items-center justify-between gap-2">
         <span>✨ 尊榮服務：全台企業指定免運點配送 + 贈送企業燙金感謝卡</span>
-        <button onclick="alert('已送出試吃申請！專員將於 24 小時內聯絡確認。')" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-500 text-white font-bold hover:opacity-90 transition-all shadow-md">
+        <button onclick="alert('已送出試吃申請！專員將於 24 小時內聯絡確認。')" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-stone-950 font-bold transition-all shadow-md">
           一鍵預約福委試吃禮盒
         </button>
       </div>
@@ -494,12 +512,12 @@ function toggleGeoOverlay() {
   const badges = document.querySelectorAll('.geo-badge');
 
   if (geoOverlayActive) {
-    btn.classList.add('bg-emerald-500', 'text-slate-950', 'font-bold');
+    btn.classList.add('bg-emerald-600', 'text-white', 'font-bold', 'border-emerald-600');
     btn.classList.remove('bg-stone-100', 'text-stone-700');
     btn.innerHTML = '<i class="fa-solid fa-eye mr-1"></i> GEO 語意透視：已啟動';
     badges.forEach(b => b.classList.remove('hidden'));
   } else {
-    btn.classList.remove('bg-emerald-500', 'text-slate-950', 'font-bold');
+    btn.classList.remove('bg-emerald-600', 'text-white', 'font-bold', 'border-emerald-600');
     btn.classList.add('bg-stone-100', 'text-stone-700');
     btn.innerHTML = '<i class="fa-solid fa-eye-slash mr-1"></i> 開啟 GEO 語意代碼透視';
     badges.forEach(b => b.classList.add('hidden'));
