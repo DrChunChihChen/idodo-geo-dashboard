@@ -35,9 +35,9 @@ function initDodoWidget() {
 
       <!-- 對話訊息列表 -->
       <div class="dodo-chat-body" id="dodoChatBody">
-        <!-- 歡迎卡片 (含 2D 平面小專員手繪插畫) -->
+        <!-- 歡迎卡片 (使用純向量 SVG 小專員) -->
         <div class="dodo-welcome-banner">
-          <img src="img/idodo_flat_mascot.jpg" alt="嘟嘟小專員 2D 插畫" class="dodo-welcome-img">
+          <img src="img/idodo_bot_avatar.svg" alt="嘟嘟小專員" class="dodo-welcome-img">
           <div class="dodo-welcome-greeting">您好！我是鴻鼎菓子的甜點顧問嘟嘟 👋</div>
           <div class="dodo-welcome-text">
             全系列獲「慈悅潔淨標章」，純粹無添加、減糖少負擔。<br>

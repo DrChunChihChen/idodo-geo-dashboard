@@ -194,13 +194,15 @@
 }
 
 .dodo-welcome-img {
-  width: 110px;
-  height: 110px;
-  margin: 0 auto 8px auto;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px auto;
   border-radius: 50%;
   border: 3px solid var(--dodo-yellow);
-  object-fit: cover;
+  object-fit: contain;
   display: block;
+  background: #FFFDF7;
+  box-shadow: 0 4px 14px rgba(244, 179, 42, 0.2);
 }
 
 .dodo-welcome-greeting {
